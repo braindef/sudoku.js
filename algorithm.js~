@@ -1,3 +1,38 @@
+// 0 defines an empty field
+//easy sudoku
+/*testBoard = [[3,0,0,2,4,0,0,6,0],
+             [0,4,0,0,0,0,0,5,3],
+             [1,8,9,6,3,5,4,0,0],
+             [0,0,0,0,8,0,2,0,0],
+             [0,0,7,4,9,6,8,0,1],
+             [8,9,3,1,5,0,6,0,4],
+             [0,0,1,9,2,0,5,0,0],
+             [2,0,0,3,0,0,7,4,0],
+             [9,6,0,5,0,0,3,0,2]];
+*/
+//medium sudoku, unambigious solution (2 solutions)
+/*testBoard = [[0,0,3,0,5,0,0,7,9],
+             [2,0,0,6,0,0,1,5,0],
+             [0,8,9,0,2,1,0,0,0],
+             [1,0,0,0,7,8,9,0,6],
+             [9,0,8,2,0,0,0,0,5],
+             [0,2,0,0,4,0,8,0,0],
+             [8,0,5,0,6,2,0,9,0],
+             [0,9,0,5,0,7,6,0,1],
+             [7,0,0,4,0,0,0,8,0]];
+*/
+
+testBoard = [[0,0,0,0,0,5,0,0,7],
+             [5,0,6,2,0,0,0,0,3],
+             [1,0,0,0,3,0,0,0,0],
+             [0,0,7,3,0,1,0,0,8],
+             [6,0,0,0,0,0,7,0,1],
+             [8,1,2,0,7,9,0,0,6],
+             [7,0,0,9,0,0,8,6,0],
+             [0,6,0,0,0,3,0,0,2],
+             [2,0,0,7,0,0,0,0,0]];
+
+
 function getCandidates(i, j, board)
 {
   //                       0  1  2  3  4  5  6  7  8  9
@@ -20,6 +55,8 @@ function getCandidates(i, j, board)
 
 function parseBoard(board)
 {
+  getFromScreen(board);
+  
   counter = 0;
   for(m=0; m<9; m++)
     for(n=0; n<9; n++)
@@ -34,9 +71,7 @@ function parseBoard(board)
         {
           counter+=3;
 
-
-
-					var speed = 800;
+					var speed = 100;
 					for (i = counter; i <= counter+2; i++) {
 						setTimeout(function(i, m, n, candidates) {
 						    if (i%3!=0)
@@ -62,5 +97,29 @@ function parseBoard(board)
         }
       }
     }
+}
 
+function guess2(board)
+{
+loop1:
+  for(m=0; m<9; m++)
+    for(n=0; n<9; n++)
+    {
+      if(board[m][n]==0)
+      {
+        candidates = getCandidates(m, n, board)
+        var sum = 0;
+        for(c=0; c<10; c++)
+          sum+=candidates[c];
+        if(sum < 3) 
+    	    for(c=0; c<9; c++)
+    	      if(candidates[c]>0)
+    	      {
+  	          board[m][n]=c;
+  	          break loop1;
+	          }
+        document.getElementById(fields[m][n]).style.color="purple";                     
+      }
+    }
+    drawBoard(board);
 }

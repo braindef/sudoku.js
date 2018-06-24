@@ -1,15 +1,5 @@
 
-// 0 defines an empty field
-testBoard = [[3, 0, 0, 2, 4, 0, 0, 6, 0],
-             [0, 4, 0, 0, 0, 0, 0, 5, 3],
-             [1, 8, 9, 6, 3, 5, 4, 0, 0],
-             [0, 0, 0, 0, 8, 0, 2, 0, 0],
-             [0, 0, 7, 4, 9, 6, 8, 0, 1],
-             [8, 9, 3, 1, 5, 0, 6, 0, 4],
-             [0, 0, 1, 9, 2, 0, 5, 0, 0],
-             [2, 0, 0, 3, 0, 0, 7, 4, 0],
-             [9, 6, 0, 5, 0, 0, 3, 0, 2]];
-            
+
 
 
 
@@ -30,33 +20,7 @@ function drawBoard(board)
     }
 }
 
-function markRow(m)
-{
-  for (i=0; i<9; i++)
-      document.getElementById(fields[m][i]).style.backgroundColor = "blue";
-}
 
-function markCol(n)
-{
-  setTimeout(function(n) {
-  for (i=0; i<9; i++)
-      document.getElementById(fields[i][n]).style.backgroundColor = "blue";
-  }, 10, n);
-}
-
-function unmarkRow(m)
-{
-  for (i=0; i<9; i++)
-      document.getElementById(fields[m][i]).style.backgroundColor = "white";
-}
-
-function unmarkCol(n)
-{
-  setTimeout(function(n) {
-  for (i=0; i<9; i++)
-      document.getElementById(fields[i][n]).style.backgroundColor = "white";
-  }, 11, n);
-}
 
 /*          markCol(n);
           markSquare(m,n);
@@ -76,7 +40,17 @@ fields = [["f11", "f12", "f13","f14", "f15", "f16","f17", "f18", "f19"],
           ["f81", "f82", "f83","f84", "f85", "f86","f87", "f88", "f89"],
           ["f91", "f92", "f93","f94", "f95", "f96","f97", "f98", "f99"]];
 
-
+function getFromScreen(board) {
+  for (i=0; i<9; i++)
+    for (j=0; j<9; j++)
+    {  
+      field = document.getElementById(fields[i][j]).value;
+      if (field>0&&field<10)
+      {
+        board[i][j]=field.value;
+      }
+    }
+}
 
 function reset() {
 }

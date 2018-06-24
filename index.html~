@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Sudoku Solver.js</title>
-    <script async src="./helperfunctions.js"></script>
+    <script src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
     <link rel="stylesheet" href="./style.css">
   </head>
@@ -142,12 +142,29 @@
 </div>
 <br><br>
 <div>
-<button onclick="parseBoard(testBoard)" style="width:200">Click Twice</button>
+<button onclick="parseBoard(testBoard)" style="width:800">solve unambiguously (n=1)</button>
     <br>
     <p id="output">
     </p>
   </body>
 </div>
+<br>
+<div>
+<button onclick="guess2(testBoard)" style="width:800">solve ambiguously (n=2)</button>
+    <br>
+    <p id="output">
+    </p>
+  </body>
+</div>
+<br>
+<div>
+<button onclick="guess(testBoard)" style="width:800">solve ambiguously backtracking when no result (n=2)</button>
+    <br>
+    <p id="output">
+    </p>
+  </body>
+</div>
+<br>
 <div>
 <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
 </div>
