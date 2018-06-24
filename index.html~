@@ -142,7 +142,7 @@
 </div>
 <br><br>
 <div>
-<button onclick="parseBoard(testBoard)" style="width:200">Click Twice</button>
+<button onclick="parseBoard(testBoard)" style="width:200">Solve</button>
     <br>
     <p id="output">
     </p>
