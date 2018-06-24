@@ -142,7 +142,7 @@
 </div>
 <br><br>
 <div>
-<button onclick="parseBoard(testBoard)" style="width:800">solve unambiguously (n=1)</button>
+<button onclick="solveUnambiguously(testBoard)" style="width:800">solve unambiguously (n=1)</button>
     <br>
     <p id="output">
     </p>
@@ -159,6 +159,14 @@
 <br>
 <div>
 <button onclick="auto2(testBoard)" style="width:800">auto solve backtracking when no result (n=2)</button>
+    <br>
+    <p id="output">
+    </p>
+  </body>
+</div>
+<br>
+<div>
+<button onclick="revert(testBoard)" style="width:800">revert to guess point</button>
     <br>
     <p id="output">
     </p>

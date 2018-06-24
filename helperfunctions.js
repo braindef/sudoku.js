@@ -16,7 +16,10 @@ function drawBoard(board)
         field.readOnly = true;
       }
       else
+      {
+        field.value="";
         field.readOnly = false;
+      }
     }
 }
 
@@ -60,11 +63,36 @@ function drawToHtml() {
 
 }
 
+//draw board to html
+function drawToConsole(board) {
+  for (var i=0; i<9; i++)
+  {
+       console.log(board[i][0] + "  " + board[i][1] + "  " + board[i][2] + " | " + board[i][3] + "  " + board[i][4] + 
+           "  " + board[i][5] + " | " + board[i][6] + "  " + board[i][7] + "  " + board[i][8]);
+    if(i%3==2 && i != 8) console.log("----------------------------");
+  }   
+  console.log("===========================")
 
-//find out if someone won the game
-function check(localBoard)
-{
 }
 
+
+
+var checkpointArray = [[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]]];
+var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+function createCheckpoint(index, selection, board)
+{
+  for (var m=0; m<9; m++)
+    for (var n=0; n<9; n++)
+      checkpointArray[index][m][n]=board[m][n];
+  selectionArray[index]=selection;
+}
+
+function copyArray(input, output)
+{
+  for (var m=0; m<9; m++)
+    for (var n=0; n<9; n++)
+      output[m][n]=input[m][n];
+}
 
 
