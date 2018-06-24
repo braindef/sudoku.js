@@ -55,7 +55,7 @@ function unmarkCol(n)
   setTimeout(function(n) {
   for (i=0; i<9; i++)
       document.getElementById(fields[i][n]).style.backgroundColor = "white";
-  }, 111, n);
+  }, 11, n);
 }
 
 /*          markCol(n);

@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Sudoku Solver.js</title>
-    <script src="./helperfunctions.js"></script>
+    <script async src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
     <link rel="stylesheet" href="./style.css">
   </head>
