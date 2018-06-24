@@ -158,7 +158,7 @@
 </div>
 <br>
 <div>
-<button onclick="guess(testBoard)" style="width:800">solve ambiguously backtracking when no result (n=2)</button>
+<button onclick="auto2(testBoard)" style="width:800">auto solve backtracking when no result (n=2)</button>
     <br>
     <p id="output">
     </p>

@@ -53,9 +53,12 @@ function getCandidates(i, j, board)
   return initialCandidates;
 }
 
-function parseBoard(board)
+function solveUnambiguously(board)
 {
   getFromScreen(board);
+ 
+  changes = false;
+
   
   counter = 0;
   for(m=0; m<9; m++)
@@ -70,7 +73,6 @@ function parseBoard(board)
         if(sum < 2)
         {
           counter+=3;
-
 					var speed = 100;
 					for (i = counter; i <= counter+2; i++) {
 						setTimeout(function(i, m, n, candidates) {
@@ -88,38 +90,59 @@ function parseBoard(board)
 								  for(k=0; k<9; k++)
 								    document.getElementById(fields[k][n]).style.backgroundColor = "cyan";
 								}
-									board[m][n]=1*candidates[1]+2*candidates[2]+3*candidates[3]+4*candidates[4]+5*candidates[5]+
-										          6*candidates[6]+7*candidates[7]+8*candidates[8]+9*candidates[9];
-							    document.getElementById(fields[m][n]).style.color="red";
-							    drawBoard(board);
+
 						}, speed * i, i, m, n, candidates);
+
 					}
+						board[m][n]=1*candidates[1]+2*candidates[2]+3*candidates[3]+4*candidates[4]+5*candidates[5]+
+							          6*candidates[6]+7*candidates[7]+8*candidates[8]+9*candidates[9];
+				    document.getElementById(fields[m][n]).style.color="red";
+				    drawBoard(board);
+            changes=true;
         }
       }
     }
+    return changes;
 }
 
-function guess2(board)
-{
+function guess2(board) {
+var backupArray = new Array();
+lastSelection=-1;
 loop1:
   for(m=0; m<9; m++)
     for(n=0; n<9; n++)
     {
       if(board[m][n]==0)
       {
-        candidates = getCandidates(m, n, board)
+        candidates = getCandidates(m, n, board);
         var sum = 0;
         for(c=0; c<10; c++)
           sum+=candidates[c];
         if(sum < 3) 
+        {
+        console.log(candidates);
     	    for(c=0; c<9; c++)
     	      if(candidates[c]>0)
     	      {
+              if (lastSelection>=c) continue;
+              lastSelection=c;
+    	        backupArray.push(Array.from(board));
+    	        console.log(backupArray);
   	          board[m][n]=c;
+              document.getElementById(fields[m][n]).style.color="purple";                     
   	          break loop1;
 	          }
-        document.getElementById(fields[m][n]).style.color="purple";                     
+	       }
       }
     }
     drawBoard(board);
 }
+
+function auto2(board) {
+  for(i=0; i<1; i++)
+    if (!solveUnambiguously(board))
+      guess2(board);
+}
+
+
+
