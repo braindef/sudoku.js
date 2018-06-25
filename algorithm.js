@@ -24,6 +24,7 @@ testBoard = [[0,0,3,0,5,0,0,7,9],
              [7,0,0,4,0,0,0,8,0]];
 */
 
+
 testBoard = [[0,0,0,0,0,5,0,0,7],
              [5,0,6,2,0,0,0,0,3],
              [1,0,0,0,3,0,0,0,0],
@@ -34,10 +35,22 @@ testBoard = [[0,0,0,0,0,5,0,0,7],
              [0,6,0,0,0,3,0,0,2],
              [2,0,0,7,0,0,0,0,0]];
 
+/*
+//von wikipedia Standardsudoku mit nur 17 vorbelegten Feldern
+testBoard = [[0,0,0,0,0,0,0,1,0],
+             [4,0,0,0,0,0,0,0,0],
+             [0,2,0,0,0,0,0,0,0],
+             [0,0,0,0,5,0,4,0,7],
+             [0,0,8,0,0,0,3,0,0],
+             [0,0,1,0,9,0,0,0,0],
+             [3,0,0,4,0,0,2,0,0],
+             [0,5,0,1,0,0,0,0,0],
+             [0,0,0,8,0,6,0,0,0]];
+*/
 
 function isSolved(board) {
-  for(m=0; m<9; m++)
-    for(n=0; n<9; n++)
+  for(var m=0; m<9; m++)
+    for(var n=0; n<9; n++)
       if(board[m][n]==0)
         return false;
   alert("Solved");
@@ -47,6 +60,7 @@ function isSolved(board) {
 
 function getCandidates(i, j, board)
 {
+  console.log("getCandidates("+i+", "+j+",board)");
   //                       0  1  2  3  4  5  6  7  8  9
   var initialCandidates = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   //check line
@@ -62,6 +76,7 @@ function getCandidates(i, j, board)
       //check the 3x3 square field of the belonging field
       initialCandidates[ board[ 3*(i-(i%3))/3 + z0 ][ 3*(j-(j%3))/3 + z1 ] ] = 0;
     }
+  console.log(initialCandidates);
   return initialCandidates;
 }
 
@@ -73,8 +88,8 @@ function solveUnambiguously(board)
 
   
   counter = 0;
-  for(m=0; m<9; m++)
-    for(n=0; n<9; n++)
+  for(var m=0; m<9; m++)
+    for(var n=0; n<9; n++)
     {
       if(board[m][n]==0)
       {
@@ -115,60 +130,87 @@ function solveUnambiguously(board)
       }
     }
     console.log("unambigious");
-    console.log(board);
     return changes;
 }
 
-function guess(board, depth) {
-var backupArray = new Array();
-console.log("initial");
-console.log(board);
-lastSelection=-1;
+var lastSelection=-1;
+
+function guess(board) {
+  console.log("LAST:"+lastSelection);
+  console.log("guess()");
+  guesses+=1;
+  document.getElementById("guesses").innerHTML=guesses;
+  
 loop1:
-  for(m=0; m<9; m++)
-    for(n=0; n<9; n++)
+  for(var m=0; m<9; m++)
+    for(var n=0; n<9; n++)
     {
       if(board[m][n]==0)
       {
-        candidates = getCandidates(m, n, board);
+        var candidates = getCandidates(m, n, board);
         var sum = 0;
         for(c=0; c<10; c++)
           sum+=candidates[c];
+
+        for(var d=lastSelection+1; d<10; d++)
+          if(candidates[d]>0) hasnext=true;
+        if(!hasnext) lastSelection=-1;
+        hasnext = false;
+
         if(sum < 3) 
         {
         console.log(candidates);
-    	    for(c=0; c<9; c++)
+    	    for(c=0; c<10; c++)
+    	    {
+
+    	    
     	      if(candidates[c]>0)
     	      {
-              if (lastSelection>=c) continue;
+              if (lastSelection>=c) { console.log("greater") ; continue; }
               lastSelection=c;
               drawToConsole(board);
-    	        createCheckpoint(depth,c,board);
-    	        console.log("m:"+m+" n:"+n+" c:"+c);
+    	        createCheckpoint(guesses,c,board);
   	          board[m][n]=c;
   	          
-              document.getElementById(fields[m][n]).style.color="purple";                     
+              
+              document.getElementById(fields[m][n]).style.color="purple";
+              
   	          break loop1;
 	          }
-	       }
+
+	        }
+	      }
       }
     }
     drawBoard(board);
 }
 
+var guesses=0;
 
 function auto(board) {
-  guesses=0;
-  for(i=0; i<1; i++)
+  console.log("auto");
+  for(var i=0; i<1; i++)
     if (!solveUnambiguously(board) && !(isSolved(board)) ) {
-      guess(board, 0);
-  }
+      guess(board);
+
+
+/*      for(j=0; j<1; j++)
+        if (!solveUnambiguously(board) && !(isSolved(board)) )
+        {
+          revert(guesses-1);
+          guesses-=1;
+          break;
+        }*/
+    }
 }
 
-function revert()
-{
-  var board=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
-  copyArray(checkpointArray[0], testBoard)
+function revert(guessNo) {
+  console.log("revert("+guessNo+")");
+  guesses-=1;
+//  var board=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
+  console.log(checkpointArray[guessNo]);
+  copyArray(checkpointArray[guessNo], testBoard)
+  lastSelection = selectionArray[guessNo];
   drawToConsole(testBoard);
   drawBoard(testBoard);
 }

@@ -16,7 +16,10 @@ function drawBoard(board)
         field.readOnly = true;
       }
       else
+      {
+        field.value="";
         field.readOnly = false;
+      }
     }
 }
 
