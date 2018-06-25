@@ -156,7 +156,7 @@ loop1:
 }
 
 
-function auto2(board) {
+function auto(board) {
   guesses=0;
   for(i=0; i<1; i++)
     if (!solveUnambiguously(board) && !(isSolved(board)) ) {
@@ -167,9 +167,9 @@ function auto2(board) {
 function revert()
 {
   var board=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
-  copyArray(checkpointArray[0], board)
-  drawToConsole(board);
-  drawBoard(board);
+  copyArray(checkpointArray[0], testBoard)
+  drawToConsole(testBoard);
+  drawBoard(testBoard);
 }
 
 
