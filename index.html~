@@ -158,7 +158,7 @@
 </div>
 <br>
 <div>
-<button onclick="auto(testBoard)" style="width:800">auto solve backtracking when no result (n=2)</button>
+<button onclick="auto(testBoard)" style="width:800">AUTO SOLVE without backtracking</button>
     <br>
     <p id="output">
     </p>
@@ -166,7 +166,7 @@
 </div>
 <br>
 <div>
-<button onclick="revert(guesses-1)" style="width:800">revert to guess checkpoint</button>
+<button onclick="revert(guesses)" style="width:800; background-color:lightgreen">revert to guess checkpoint</button>
     <br>
     <p id="output">
     </p>

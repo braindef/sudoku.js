@@ -186,28 +186,23 @@ loop1:
 }
 
 var guesses=0;
+var depth=1;   //TODO: breitensuche
 
 function auto(board) {
   console.log("auto");
-  for(var i=0; i<1; i++)
-    if (!solveUnambiguously(board) && !(isSolved(board)) ) {
-      guess(board);
+  for(var i=0; i<20; i++)
+  {
+    if(isSolved(board)) return;
+    if(!solveUnambiguously(board))
+      guess(board)
+  }
 
-
-/*      for(j=0; j<1; j++)
-        if (!solveUnambiguously(board) && !(isSolved(board)) )
-        {
-          revert(guesses-1);
-          guesses-=1;
-          break;
-        }*/
-    }
 }
 
 function revert(guessNo) {
+  if(guessNo==0) return;
   console.log("revert("+guessNo+")");
   guesses-=1;
-//  var board=[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
   console.log(checkpointArray[guessNo]);
   copyArray(checkpointArray[guessNo], testBoard)
   lastSelection = selectionArray[guessNo];
