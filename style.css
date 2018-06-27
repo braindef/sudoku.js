@@ -12,7 +12,10 @@ table {
   background-size: 100%;
   
   background-image:    url(sudoku-leer.svg) no-repeat;
-  background-size: 600px 515px;
+  background-size: 100% 100%;
+  
+  width:600px;
+
 }
 
 td {
@@ -31,6 +34,10 @@ button, input {
   font-size:30;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+}
+
+button {
+  width:600px;
 }
 
 input {
