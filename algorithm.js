@@ -1,7 +1,7 @@
 // 0 defines an empty field
 //easy sudoku
 
-testBoard2 = [[3,0,0,2,4,0,0,6,0],
+testBoard1 = [[3,0,0,2,4,0,0,6,0],
              [0,4,0,0,0,0,0,5,3],
              [1,8,9,6,3,5,4,0,0],
              [0,0,0,0,8,0,2,0,0],
@@ -25,7 +25,7 @@ testBoard2 = [[0,0,3,0,5,0,0,7,9],
 
 
 
-testBoard2 = [[0,0,0,0,0,5,0,0,7],
+testBoard3 = [[0,0,0,0,0,5,0,0,7],
              [5,0,6,2,0,0,0,0,3],
              [1,0,0,0,3,0,0,0,0],
              [0,0,7,3,0,1,0,0,8],
@@ -37,7 +37,7 @@ testBoard2 = [[0,0,0,0,0,5,0,0,7],
 
 
 //von wikipedia Standardsudoku mit nur 17 vorbelegten Feldern
-testBoard2 = [[0,0,0,0,0,0,0,1,0],
+testBoard4 = [[0,0,0,0,0,0,0,1,0],
              [4,0,0,0,0,0,0,0,0],
              [0,2,0,0,0,0,0,0,0],
              [0,0,0,0,5,0,4,0,7],
@@ -48,7 +48,7 @@ testBoard2 = [[0,0,0,0,0,0,0,1,0],
              [0,0,0,8,0,6,0,0,0]];
 
 //von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard2  = [[0,3,2,0,5,4,9,0,0],
+testBoard5  = [[0,3,2,0,5,4,9,0,0],
               [0,9,0,0,0,1,0,0,4],
               [0,8,0,7,0,0,0,3,1],
               [0,0,5,6,0,0,0,2,7],
@@ -59,7 +59,7 @@ testBoard2  = [[0,3,2,0,5,4,9,0,0],
               [6,0,3,0,0,0,0,0,0]];
 
 //evil sudoku von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard2  = [[0,0,5,2,0,0,0,0,0],
+testBoard6  = [[0,0,5,2,0,0,0,0,0],
               [4,0,0,3,0,0,7,0,0],
               [6,0,0,0,0,0,0,1,0],
               [8,0,0,0,2,0,1,0,0],
@@ -138,10 +138,16 @@ function getMinCandidate()
 
 guesses=0;
 steps=3;
+elapsed=0;
+
 
 function auto() {
-
   getFromScreen();
+
+// using static methods
+var start = Date.now();
+// the event you'd like to time goes here:
+
   for(var i=0; i<9999; i++)
   {
     [field, candidates, min] = getMinCandidate();
@@ -181,6 +187,8 @@ function auto() {
       }
     }
   }
+  var end = Date.now();
+  elapsed = "0."+(end - start)+" Seconds"; // time in milliseconds
   update();
 }
 

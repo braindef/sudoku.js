@@ -5,6 +5,7 @@ function update()
 {
   document.getElementById("guesses").innerHTML=guesses;
   document.getElementById("selectionArray").innerHTML=selection;
+  document.getElementById("elapsed").innerHTML=elapsed;
   drawBoard(testBoard);
 }
 
@@ -30,6 +31,12 @@ function drawBoard(board)
     }
 }
 
+function load(board) {
+  testBoard=board;
+  drawBoard(testBoard);
+  init();
+
+}
 
 
 /*          markCol(n);
@@ -97,13 +104,14 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
   console.log(checkpointArray[80]);
+
 }
 
 var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
 
 function pushCheckpoint(index, selection)
 {
-  alert("pushCheckpoint()");
+  console.log("pushCheckpoint()");
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
       checkpointArray[index][m][n]=testBoard[m][n];

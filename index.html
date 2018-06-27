@@ -1,9 +1,14 @@
 <html>
   <head>
     <title>Sudoku Solver.js</title>
+    <link rel="stylesheet" href="./style.css">
+
     <script src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
-    <link rel="stylesheet" href="./style.css">
+    <script src="./generator.js"></script>
+
+    <script src="./offCanvasMenu.js"></script>
+    <link rel="stylesheet" href="./offCanvasMenu.css">
   </head>
   <body style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
 <div>
@@ -11,159 +16,117 @@
 <h1>Sudoku Solver<br></h1>
 <p>you can clear it and enter your own, it should solve all valid Sudokus</p>
 </div>
+
 <div id="inner">
-<table id="table" background="sudoku-leer.png">
+  <!-- THE Off Canvas Menu-->
+  <div id="main">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; settings</span>
+  </div>
 
-<tr>
-<td>
-<input id=f11  step="1"/>
-<input id=f12  step="1"/>
-<input id=f13  step="1"/>
-<br>
-<input id=f21  step="1"/>
-<input id=f22  step="1"/>
-<input id=f23  step="1"/>
-<br>
-<input id=f31  step="1"/>
-<input id=f32  step="1"/>
-<input id=f33  step="1"/>
-</td>
-<td>
-<input id=f14  step="1"/>
-<input id=f15  step="1"/>
-<input id=f16  step="1"/>
-<br>
-<input id=f24  step="1"/>
-<input id=f25  step="1"/>
-<input id=f26  step="1"/>
-<br>
-<input id=f34  step="1"/>
-<input id=f35  step="1"/>
-<input id=f36  step="1"/>
-</td>
-<td>
-<input id=f17  step="1"/>
-<input id=f18  step="1"/>
-<input id=f19  step="1"/>
-<br>
-<input id=f27  step="1"/>
-<input id=f28  step="1"/>
-<input id=f29  step="1"/>
-<br>
-<input id=f37  step="1"/>
-<input id=f38  step="1"/>
-<input id=f39  step="1"/>
-</td>
-</tr>
-
-<tr>
-<td>
-<input id=f41  step="1"/>
-<input id=f42  step="1"/>
-<input id=f43  step="1"/>
-<br>
-<input id=f51  step="1"/>
-<input id=f52  step="1"/>
-<input id=f53  step="1"/>
-<br>
-<input id=f61  step="1"/>
-<input id=f62  step="1"/>
-<input id=f63  step="1"/>
-</td>
-<td>
-<input id=f44  step="1"/>
-<input id=f45  step="1"/>
-<input id=f46  step="1"/>
-<br>
-<input id=f54  step="1"/>
-<input id=f55  step="1"/>
-<input id=f56  step="1"/>
-<br>
-<input id=f64  step="1"/>
-<input id=f65  step="1"/>
-<input id=f66  step="1"/>
-</td>
-<td>
-<input id=f47  step="1"/>
-<input id=f48  step="1"/>
-<input id=f49  step="1"/>
-<br>
-<input id=f57  step="1"/>
-<input id=f58  step="1"/>
-<input id=f59  step="1"/>
-<br>
-<input id=f67  step="1"/>
-<input id=f68  step="1"/>
-<input id=f69  step="1"/>
-</td>
-</tr>
-
-<tr>
-<td>
-<input id=f71  step="1"/>
-<input id=f72  step="1"/>
-<input id=f73  step="1"/>
-<br>
-<input id=f81  step="1"/>
-<input id=f82  step="1"/>
-<input id=f83  step="1"/>
-<br>
-<input id=f91  step="1"/>
-<input id=f92  step="1"/>
-<input id=f93  step="1"/>
-</td>
-<td>
-<input id=f74  step="1"/>
-<input id=f75  step="1"/>
-<input id=f76  step="1"/>
-<br>
-<input id=f84  step="1"/>
-<input id=f85  step="1"/>
-<input id=f86  step="1"/>
-<br>
-<input id=f94  step="1"/>
-<input id=f95  step="1"/>
-<input id=f96  step="1"/>
-</td>
-<td>
-<input id=f77  step="1"/>
-<input id=f78  step="1"/>
-<input id=f79  step="1"/>
-<br>
-<input id=f87  step="1"/>
-<input id=f88  step="1"/>
-<input id=f89  step="1"/>
-<br>
-<input id=f97  step="1"/>
-<input id=f98  step="1"/>
-<input id=f99  step="1"/>
-</td>
-</tr>
-</table>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#" onclick="load(testBoard1)">Example 1</a>
+  <a href="#" onclick="load(testBoard2)">Example 2</a>
+  <a href="#" onclick="load(testBoard3)">Example 3</a>
+  <a href="#" onclick="load(testBoard4)">Example 4</a>
+  <a href="#" onclick="load(testBoard5)">Example 5</a>
+  <a href="#" onclick="load(testBoard6)">Example 6</a>
 </div>
-<br><br>
+
+ 
+  <!-- The Sudoku Grid Table with 3x3 cells that contains each 9 input fileds-->
+  <table id="table" background="sudoku-leer.png">
+    <tr>
+      <td>
+        <input id=f11  step="1"/> <input id=f12  step="1"/> <input id=f13  step="1"/>
+        <br>
+        <input id=f21  step="1"/> <input id=f22  step="1"/> <input id=f23  step="1"/>
+        <br>
+        <input id=f31  step="1"/> <input id=f32  step="1"/> <input id=f33  step="1"/>
+      </td>
+      <td>
+        <input id=f14  step="1"/> <input id=f15  step="1"/> <input id=f16  step="1"/>
+        <br>
+        <input id=f24  step="1"/> <input id=f25  step="1"/> <input id=f26  step="1"/>
+        <br>
+        <input id=f34  step="1"/> <input id=f35  step="1"/> <input id=f36  step="1"/>
+      </td>
+      <td>
+        <input id=f17  step="1"/> <input id=f18  step="1"/> <input id=f19  step="1"/>
+        <br>
+        <input id=f27  step="1"/> <input id=f28  step="1"/> <input id=f29  step="1"/>
+        <br>
+        <input id=f37  step="1"/> <input id=f38  step="1"/> <input id=f39  step="1"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <input id=f41  step="1"/> <input id=f42  step="1"/> <input id=f43  step="1"/>
+        <br>
+        <input id=f51  step="1"/> <input id=f52  step="1"/> <input id=f53  step="1"/>
+        <br>
+        <input id=f61  step="1"/> <input id=f62  step="1"/> <input id=f63  step="1"/>
+      </td>
+      <td>
+        <input id=f44  step="1"/> <input id=f45  step="1"/> <input id=f46  step="1"/>
+        <br>
+        <input id=f54  step="1"/> <input id=f55  step="1"/> <input id=f56  step="1"/>
+        <br>
+        <input id=f64  step="1"/> <input id=f65  step="1"/> <input id=f66  step="1"/>
+      </td>
+      <td>
+        <input id=f47  step="1"/> <input id=f48  step="1"/> <input id=f49  step="1"/>
+        <br>
+        <input id=f57  step="1"/> <input id=f58  step="1"/> <input id=f59  step="1"/>
+        <br>
+        <input id=f67  step="1"/> <input id=f68  step="1"/> <input id=f69  step="1"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <input id=f71  step="1"/> <input id=f72  step="1"/> <input id=f73  step="1"/>
+        <br>
+        <input id=f81  step="1"/> <input id=f82  step="1"/> <input id=f83  step="1"/>
+        <br>
+        <input id=f91  step="1"/> <input id=f92  step="1"/> <input id=f93  step="1"/>
+      </td>
+      <td>
+        <input id=f74  step="1"/> <input id=f75  step="1"/> <input id=f76  step="1"/>
+        <br>
+        <input id=f84  step="1"/> <input id=f85  step="1"/> <input id=f86  step="1"/>
+        <br>
+        <input id=f94  step="1"/> <input id=f95  step="1"/> <input id=f96  step="1"/>
+      </td>
+      <td>
+        <input id=f77  step="1"/> <input id=f78  step="1"/> <input id=f79  step="1"/>
+        <br>
+        <input id=f87  step="1"/> <input id=f88  step="1"/> <input id=f89  step="1"/>
+        <br>
+        <input id=f97  step="1"/> <input id=f98  step="1"/> <input id=f99  step="1"/>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br>
+
 <div id="inner">
-<button onclick="revert(guesses, true)" style="background-color:orange">clear</button>
-
-<br>
-<div>
-<button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
-</div>
-<br>
-<div>
-<button onclick="revert(1)">revert to guess checkpoint</button>
+  <button onclick="revert(guesses, true)" style="background-color:orange">clear</button>
+  <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
+  <button onclick="revert(1)">revert to guess checkpoint</button>
 </div>
 
 <br>
-<div>
-guesses: <span id=guesses>0</span>
-</div>
-<div>
-selectionArray: <span id=selectionArray>--</span>
+<div id="inner">
+  <p>guesses: <span id=guesses>0</span></p>
+  <p style="display:none;" >selectionArray: <span id=selectionArray>--</span></p>
+  <p>Time: <span id="elapsed">--</span></p>
 </div>
 <br>
-<div>
-<a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
+<div id="inner">
+  <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
 </div>
 </div>
 <script>

@@ -5,6 +5,7 @@ function update()
 {
   document.getElementById("guesses").innerHTML=guesses;
   document.getElementById("selectionArray").innerHTML=selection;
+  document.getElementById("elapsed").innerHTML=elapsed;
   drawBoard(testBoard);
 }
 
@@ -30,6 +31,13 @@ function drawBoard(board)
     }
 }
 
+function load(board) {
+  document.getElementById("table").style.backgroundColor="white";
+  testBoard=board;
+  drawBoard(testBoard);
+  init();
+
+}
 
 
 /*          markCol(n);
@@ -97,6 +105,7 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
   console.log(checkpointArray[80]);
+
 }
 
 var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
