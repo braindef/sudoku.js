@@ -36,6 +36,7 @@ button, input {
   width:50;
   height:50;
   font-size:30;
+  font-weight:bold;
   -webkit-appearance: none;
   -webkit-border-radius: 0;
 }
