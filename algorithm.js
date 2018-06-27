@@ -59,10 +59,10 @@ testBoard2  = [[0,3,2,0,5,4,9,0,0],
               [6,0,3,0,0,0,0,0,0]];
 
 
-function isSolved(board) {
+function isSolved() {
   for(var m=0; m<9; m++)
     for(var n=0; n<9; n++)
-      if(board[m][n]==0)
+      if(testBoard[m][n]==0)
         return false;
   document.getElementById("table").style.backgroundColor="lightgreen";
   return true;
@@ -71,7 +71,6 @@ function isSolved(board) {
 
 function getCandidates(i, j)
 {
-  console.log("getCandidates("+i+", "+j+",board)");
   //                       0  1  2  3  4  5  6  7  8  9
   var initialCandidates = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   //check line
@@ -100,15 +99,13 @@ function getMinCandidate()
 		{
 		 if(testBoard[i][j]==0)
 		 {
-       console.log(getCandidates(i,j));		 
 			 candidates = getCandidates(i,j);
 			 temp = candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+
-				    candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9];
+              candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9];
 			 if (temp<min)
 			 {
 				 min=temp;
 				 field=[i, j];
-         
 				 c=candidates;
 			 }
 		 }
@@ -124,11 +121,11 @@ function auto() {
   for(var i=0; i<81; i++)
   {
     [field, candidates] = getMinCandidate();
-    console.log(field[1]);
-    testBoard[field[0]][field[1]]= candidates[0]  +candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
-				                           candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
-		drawBoard(testBoard);
+    if(isSolved()) break;
+    testBoard[field[0]][field[1]] = candidates[0]  +candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
+				                            candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
   }
+  drawBoard(testBoard);
 }
 
 function revert() {

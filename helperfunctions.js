@@ -18,8 +18,9 @@ function drawBoard(board)
       field = document.getElementById(fields[i][j]);
       if (board[i][j]>0)
       {
+      
         field.value=board[i][j];
-        field.readOnly = true;
+        field.readOnly = false;
       }
       else
       {
