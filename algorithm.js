@@ -124,6 +124,7 @@ function auto() {
   for(var i=0; i<81; i++)
   {
     [field, candidates] = getMinCandidate();
+    console.log(field[1]);
     testBoard[field[0]][field[1]]= candidates[0]  +candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
 				                           candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
 		drawBoard(testBoard);

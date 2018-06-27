@@ -163,7 +163,7 @@
 </div>
 <br>
 <div>
-<button onclick="getMinCandidate()" style="width:800">minCandidate</button>
+<button onclick="alert(getMinCandidate())" style="width:800">minCandidate</button>
 </div>
 <br>
 <div>

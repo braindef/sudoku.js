@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg1435"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 793.70079 1122.5197"
+   sodipodi:docname="sudoku-leer.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata1441">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs1439" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     id="namedview1437"
+     showgrid="false"
+     inkscape:zoom="0.75722503"
+     inkscape:cx="396.85039"
+     inkscape:cy="561.25984"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1435"
+     units="mm" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:9.33933258;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 49.623302,452.22415 H 743.17506"
+     id="path1445"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:9.33933258;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 48.803488,681.76843 H 742.35527"
+     id="path1445-3"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:9.33933258;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 279.98742,221.86002 V 915.4119"
+     id="path1445-6"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:9.33933258;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 510.35153,222.6798 V 916.23154"
+     id="path1445-6-7"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 44.704466,298.92134 H 738.25625"
+     id="path1445-9"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 49.213383,376.80243 H 742.76517"
+     id="path1445-9-1"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 51.262881,529.69537 H 744.81467"
+     id="path1445-9-2"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 48.803488,607.16657 H 742.35527"
+     id="path1445-9-7"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 49.213383,758.00989 H 742.76517"
+     id="path1445-9-0"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 47.983674,835.89113 H 741.53546"
+     id="path1445-9-9"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 127.50439,222.6798 V 916.23154"
+     id="path1445-9-9-3"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 206.20532,219.40062 V 912.95248"
+     id="path1445-9-9-3-6"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 358.68832,221.04023 V 914.59201"
+     id="path1445-9-9-3-0"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 435.74962,222.6798 V 916.23154"
+     id="path1445-9-9-3-62"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 588.23265,219.40062 V 912.95248"
+     id="path1445-9-9-3-61"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:3.73573303;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 663.65434,219.40062 V 912.95248"
+     id="path1445-9-9-3-8"
+     inkscape:connector-curvature="0"
+     inkscape:export-xdpi="206.58"
+     inkscape:export-ydpi="206.58"
+     inkscape:export-filename="/home/marc/path1445.png" />
+</svg>

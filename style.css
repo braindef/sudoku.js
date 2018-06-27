@@ -9,6 +9,10 @@ div {
 table {
   border-collapse: collapse;
   border: 10px solid black;
+  background-size: 100%;
+  
+  background-image:    url(sudoku-leer.svg) no-repeat;
+  background-size: 600px 510px;
 }
 
 td {
@@ -19,7 +23,7 @@ td {
 }
 
 button, input {
-  border: 0px solid white;
+ border: 0px solid white;
   text-align:center;
   margin: 2px;
   width:50;
@@ -29,7 +33,10 @@ button, input {
   -webkit-border-radius: 0;
 }
 
-table, input {
-  background-color: red;
-  
-  }
+input {
+  background: transparent;
+}
+
+/*table, input {
+  background-color: lightcyan;
+}*/

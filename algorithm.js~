@@ -1,7 +1,7 @@
 // 0 defines an empty field
 //easy sudoku
 
-testBoard2 = [[3,0,0,2,4,0,0,6,0],
+testBoard = [[3,0,0,2,4,0,0,6,0],
              [0,4,0,0,0,0,0,5,3],
              [1,8,9,6,3,5,4,0,0],
              [0,0,0,0,8,0,2,0,0],
@@ -48,7 +48,7 @@ testBoard2 = [[0,0,0,0,0,0,0,1,0],
              [0,0,0,8,0,6,0,0,0]];
 
 //von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard  = [[0,3,2,0,5,4,9,0,0],
+testBoard2  = [[0,3,2,0,5,4,9,0,0],
               [0,9,0,0,0,1,0,0,4],
               [0,8,0,7,0,0,0,3,1],
               [0,0,4,5,0,0,0,2,7],
@@ -114,7 +114,7 @@ function getMinCandidate()
 		 }
 		}
 
-	return [field, c];
+	return [field, c, min];
 }
 
 
@@ -123,7 +123,8 @@ function auto() {
   getFromScreen();
   for(var i=0; i<81; i++)
   {
-    [field, candidates] = getMinCandidate();
+    [field, candidates, min] = getMinCandidate();
+    console.log(field[1]);
     testBoard[field[0]][field[1]]= candidates[0]  +candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
 				                           candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
 		drawBoard(testBoard);
