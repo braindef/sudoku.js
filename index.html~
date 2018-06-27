@@ -9,6 +9,7 @@
 
     <script src="./offCanvasMenu.js"></script>
     <link rel="stylesheet" href="./offCanvasMenu.css">
+    
   </head>
   <body style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
 <div>
@@ -20,7 +21,10 @@
 <div id="inner">
   <!-- THE Off Canvas Menu-->
 <!--  <div id="main">-->
-    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; settings</span>
+    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; load </span>
+    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(0)">&#128193; easy</span> 
+    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(1)">&#128193; medium</span> 
+    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(2)">&#128193; hard</span> 
 <!--  </div>-->
 
 <div id="mySidenav" class="sidenav">
@@ -31,6 +35,7 @@
   <a href="#" onclick="load(testBoard4)">Example 4</a>
   <a href="#" onclick="load(testBoard5)">Example 5</a>
   <a href="#" onclick="load(testBoard6)">Example 6</a>
+  <a href="#" onclick="load(testBoard6)">Example 7</a>  
 </div>
 
  
@@ -113,7 +118,7 @@
 <br>
 
 <div id="inner">
-  <button onclick="init()" style="background-color:orange">clear</button>
+  <button onclick="reset()" style="background-color:orange">clear</button>
   <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
   <button onclick="revert(1)">revert to guess checkpoint</button>
 </div>

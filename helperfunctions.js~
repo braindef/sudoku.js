@@ -1,13 +1,19 @@
 //if page is finished loading run the init() function
 document.addEventListener("DOMContentLoaded", function() {
-  init();
+  load(testBoard7);
 });
 
-
+function copy(from, to)
+{
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      to[i][j]=from[i][j];
+}
 
 function load(board) {
   document.getElementById("table").style.backgroundColor="transparent";
-  testBoard=board;
+  copy(board, testBoard);
+  //testBoard=board;
   drawBoard(testBoard);
   init();
 
@@ -81,7 +87,7 @@ function init() {
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
     {
-      console.log(fields[i][j]);
+      //console.log(fields[i][j]);
       document.getElementById(fields[i][j]).style.color = "black";
     }
       document.getElementById("table").style.backgroundColor="white";

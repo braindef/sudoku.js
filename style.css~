@@ -46,6 +46,7 @@ button {
 
 input {
   background: transparent;
+  font-weight:bold;
 }
 
 /*table, input {
