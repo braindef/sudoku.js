@@ -19,9 +19,9 @@
 
 <div id="inner">
   <!-- THE Off Canvas Menu-->
-  <div id="main">
-    <span onclick="openNav()">&#9776; settings</span>
-  </div>
+<!--  <div id="main">-->
+    <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; settings</span>
+<!--  </div>-->
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
