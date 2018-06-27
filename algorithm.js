@@ -35,9 +35,9 @@ testBoard = [[0,0,0,0,0,5,0,0,7],
              [0,6,0,0,0,3,0,0,2],
              [2,0,0,7,0,0,0,0,0]];
 
-/*
+
 //von wikipedia Standardsudoku mit nur 17 vorbelegten Feldern
-testBoard = [[0,0,0,0,0,0,0,1,0],
+testBoard2 = [[0,0,0,0,0,0,0,1,0],
              [4,0,0,0,0,0,0,0,0],
              [0,2,0,0,0,0,0,0,0],
              [0,0,0,0,5,0,4,0,7],
@@ -46,14 +46,14 @@ testBoard = [[0,0,0,0,0,0,0,1,0],
              [3,0,0,4,0,0,2,0,0],
              [0,5,0,1,0,0,0,0,0],
              [0,0,0,8,0,6,0,0,0]];
-*/
+
 
 function isSolved(board) {
   for(var m=0; m<9; m++)
     for(var n=0; n<9; n++)
       if(board[m][n]==0)
         return false;
-  alert("Solved");
+  document.getElementById("table").style.backgroundColor="lightgreen";
   return true;
 }
 
@@ -134,12 +134,24 @@ function solveUnambiguously(board)
 }
 
 var lastSelection=-1;
+var guesses=0;
+depth=1;   //TODO: breitensuche
 
-function guess(board) {
-  console.log("LAST:"+lastSelection);
-  console.log("guess()");
-  guesses+=1;
+function updateDebug()
+{
   document.getElementById("guesses").innerHTML=guesses;
+  document.getElementById("depth").innerHTML=depth;
+  document.getElementById("selectionArray").innerHTML=lastSelection;
+}
+
+
+
+function guess(board, pDepth) {
+  //alert("guess(Depth: " + depth);
+  if(pDepth<guesses) return;
+  console.log("LAST:"+lastSelection);
+  guesses+=1;
+  updateDebug();
   
 loop1:
   for(var m=0; m<9; m++)
@@ -154,12 +166,17 @@ loop1:
 
         for(var d=lastSelection+1; d<10; d++)
           if(candidates[d]>0) hasnext=true;
-        if(!hasnext) lastSelection=-1;
+        if(!hasnext)
+        {
+          lastSelection=-1;
+          depth+=1;
+          revert(guesses, false);
+        }
         hasnext = false;
 
         if(sum < 3) 
         {
-        console.log(candidates);
+        //console.log(candidates);
     	    for(c=0; c<10; c++)
     	    {
 
@@ -169,8 +186,10 @@ loop1:
               if (lastSelection>=c) { console.log("greater") ; continue; }
               lastSelection=c;
               drawToConsole(board);
-    	        createCheckpoint(guesses,c,board);
+    	        createCheckpoint(guesses,c,board);  //TODO: hier stimmt was nicht
+  	          lastSelection=-1;
   	          board[m][n]=c;
+  	          setTimeout(function(e){drawBoard(board);},100);
   	          
               
               document.getElementById(fields[m][n]).style.color="purple";
@@ -185,29 +204,37 @@ loop1:
     drawBoard(board);
 }
 
-var guesses=0;
-var depth=1;   //TODO: breitensuche
 
 function auto(board) {
-  console.log("auto");
-  for(var i=0; i<20; i++)
+  console.log("auto()");
+  
+  for(var i=0; i<10; i++) 
   {
-    if(isSolved(board)) return;
-    if(!solveUnambiguously(board))
-      guess(board)
+    for(var j=0; j<81; j++)
+		{
+		  if(isSolved(board)) return;
+		  if(!solveUnambiguously(board))
+		    guess(board,depth)
+		}
+		solveUnambiguously(board);
+		if(isSolved(board)) return;
+		else
+		{
+		  console.log("Guess No in Auto: "+guesses);
+		  revert(guesses);
+		}
   }
-
 }
 
-function revert(guessNo) {
-  if(guessNo==0) return;
+function revert(guessNo, clear) {
+  if (!clear) if(guessNo==0) return;
   console.log("revert("+guessNo+")");
   guesses-=1;
   console.log(checkpointArray[guessNo]);
   copyArray(checkpointArray[guessNo], testBoard)
   lastSelection = selectionArray[guessNo];
-  drawToConsole(testBoard);
   drawBoard(testBoard);
+  updateDebug();
 }
 
 
