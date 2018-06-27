@@ -4,7 +4,7 @@
 function update()
 {
   document.getElementById("guesses").innerHTML=guesses;
-  //document.getElementById("selectionArray").innerHTML=lastSelection;
+  document.getElementById("selectionArray").innerHTML=selection;
   drawBoard(testBoard);
 }
 
@@ -101,7 +101,7 @@ function init() {
 
 var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
 
-function createCheckpoint(index, selection)
+function pushCheckpoint(index, selection)
 {
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
@@ -109,7 +109,7 @@ function createCheckpoint(index, selection)
   selectionArray[index]=selection;
 }
 
-function getCheckpoint(index)
+function popCheckpoint(index)
 {
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)

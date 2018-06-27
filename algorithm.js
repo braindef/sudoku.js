@@ -115,13 +115,21 @@ function getMinCandidate()
 }
 
 guesses=0;
+steps=3;
 
 function auto() {
+
   getFromScreen();
   for(var i=0; i<81; i++)
   {
     [field, candidates, min] = getMinCandidate();
     if(isSolved()) break;
+    if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
+    {
+      revert(steps++);
+      continue;
+    }
+    console.log(candidates, field);
     if(min<2)
     {
       //if there is only one possible number to enter everything is fine, wie enter it
@@ -129,25 +137,34 @@ function auto() {
 			  	                            candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
       document.getElementById(fields[field[0]][field[1]]).style.color = "green";
     }
-    else
+    else //if 2 or more candidates
     {
+      var hasNext=false;
       for(var c=0; c<10; c++)
-        if(candidates[c]==1 && selection < c)
+      {
+        if(candidates[c]==1 /*&& selection < c*/)
         {
-          createCheckpoint(guesses++, c);
+        for(var d=c; d<10; d++)
+            if(candidates[d]==1)
+              hasNext=true;
+          if(hasNext) selection=-1;
+        
+          pushCheckpoint(guesses++, c);
           testBoard[field[0]][field[1]] = c;
           document.getElementById(fields[field[0]][field[1]]).style.color = "red";
-          break;
+          //break;
         }
-     }
+      }
+    }
   }
   update();
 }
 
 selection=-1;
 
-function revert() {
-  getCheckpoint(--guesses);
+function revert(steps) {
+  alert("REVERT");
+  popCheckpoint(guesses-steps);
   update();
 }
 
