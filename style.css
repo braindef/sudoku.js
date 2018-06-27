@@ -3,7 +3,11 @@ div {
   width:100%;
   /*border: 3px solid #73AD21;*/
   /*display: flex;*/
-  justify-content: center;
+}
+
+#inner {
+    margin: auto;
+    width: 600px;
 }
 
 table {

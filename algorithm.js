@@ -177,7 +177,6 @@ function auto() {
           pushCheckpoint(guesses++, c);
           testBoard[field[0]][field[1]] = c;
           document.getElementById(fields[field[0]][field[1]]).style.color = "red";
-          //break;
         }
       }
     }
@@ -189,7 +188,6 @@ selection=-1;
 
 function revert(steps) {
   guesses-=steps;
-  console.log("REVERT");
   popCheckpoint(guesses);
   guesses--;
   update();

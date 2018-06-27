@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
-
 <div>
+<div id="inner">
 <h1>Sudoku Solver<br></h1>
 <p>you can clear it and enter your own, it should solve all valid Sudokus</p>
 </div>
-<div>
+<div id="inner">
 <table id="table" background="sudoku-leer.png">
 
 <tr>
@@ -143,15 +143,15 @@
 </div>
 <br><br>
 <div>
-<button onclick="revert(guesses, true)" style="width:800; background-color:orange">clear</button>
+<button onclick="revert(guesses, true)" style="background-color:orange">clear</button>
+
+<br>
+<div>
+<button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
 </div>
 <br>
 <div>
-<button onclick="auto(testBoard)" style="width:800; background-color:lightgreen">AUTO SOLVE with backtracking</button>
-</div>
-<br>
-<div>
-<button onclick="revert(1)" style="width:800">revert to guess checkpoint</button>
+<button onclick="revert(1)">revert to guess checkpoint</button>
 </div>
 
 <br>
@@ -165,7 +165,7 @@ selectionArray: <span id=selectionArray>--</span>
 <div>
 <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
 </div>
-
+</div>
 <script>
 drawBoard(testBoard);
 </script>

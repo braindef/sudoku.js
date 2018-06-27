@@ -3,7 +3,11 @@ div {
   width:100%;
   /*border: 3px solid #73AD21;*/
   /*display: flex;*/
-  justify-content: center;
+}
+
+#inner {
+    margin: auto;
+    width: 30%;
 }
 
 table {
@@ -13,6 +17,8 @@ table {
   
   background-image:    url(sudoku-leer.svg) no-repeat;
   background-size: 100% 100%;
+  
+  width:600px;
 
 }
 
