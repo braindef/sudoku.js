@@ -103,6 +103,7 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 
 function pushCheckpoint(index, selection)
 {
+  alert("pushCheckpoint()");
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
       checkpointArray[index][m][n]=testBoard[m][n];

@@ -25,7 +25,7 @@ testBoard2 = [[0,0,3,0,5,0,0,7,9],
 
 
 
-testBoard = [[0,0,0,0,0,5,0,0,7],
+testBoard2 = [[0,0,0,0,0,5,0,0,7],
              [5,0,6,2,0,0,0,0,3],
              [1,0,0,0,3,0,0,0,0],
              [0,0,7,3,0,1,0,0,8],
@@ -37,7 +37,7 @@ testBoard = [[0,0,0,0,0,5,0,0,7],
 
 
 //von wikipedia Standardsudoku mit nur 17 vorbelegten Feldern
-testBoard2 = [[0,0,0,0,0,0,0,1,0],
+testBoard = [[0,0,0,0,0,0,0,1,0],
              [4,0,0,0,0,0,0,0,0],
              [0,2,0,0,0,0,0,0,0],
              [0,0,0,0,5,0,4,0,7],
@@ -126,7 +126,7 @@ function auto() {
     if(isSolved()) break;
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
     {
-      revert(steps++);
+      revert(1);
       continue;
     }
     console.log(candidates, field);
@@ -147,7 +147,10 @@ function auto() {
         for(var d=c; d<10; d++)
             if(candidates[d]==1)
               hasNext=true;
-          if(hasNext) selection=-1;
+          if(!hasNext)
+          {
+            revert(2);
+          }
         
           pushCheckpoint(guesses++, c);
           testBoard[field[0]][field[1]] = c;
@@ -163,8 +166,10 @@ function auto() {
 selection=-1;
 
 function revert(steps) {
-  alert("REVERT");
-  popCheckpoint(guesses-steps);
+  guesses-=steps;
+  console.log("REVERT");
+  popCheckpoint(guesses);
+  guesses--;
   update();
 }
 

@@ -159,7 +159,7 @@
 </div>
 <br>
 <div>
-<button onclick="revert(guesses, false)" style="width:800">revert to guess checkpoint</button>
+<button onclick="revert()" style="width:800">revert to guess checkpoint</button>
 </div>
 <br>
 <div>

@@ -126,7 +126,7 @@ function auto() {
     if(isSolved()) break;
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
     {
-      revert(steps++);
+      revert(1);
       continue;
     }
     console.log(candidates, field);
@@ -142,12 +142,15 @@ function auto() {
       var hasNext=false;
       for(var c=0; c<10; c++)
       {
-        if(candidates[c]==1 && selection < c)
+        if(candidates[c]==1 /*&& selection < c*/)
         {
         for(var d=c; d<10; d++)
             if(candidates[d]==1)
               hasNext=true;
-          if(hasNext) selection=-1;
+          if(!hasNext)
+          {
+            revert(2);
+          }
         
           pushCheckpoint(guesses++, c);
           testBoard[field[0]][field[1]] = c;
@@ -163,8 +166,10 @@ function auto() {
 selection=-1;
 
 function revert(steps) {
-  alert("REVERT");
-  popCheckpoint(guesses-steps);
+  guesses-=steps;
+  console.log("REVERT");
+  popCheckpoint(guesses);
+  guesses--;
   update();
 }
 
