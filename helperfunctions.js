@@ -4,8 +4,8 @@
 function update()
 {
   document.getElementById("guesses").innerHTML=guesses;
-  document.getElementById("depth").innerHTML=depth;
-  document.getElementById("selectionArray").innerHTML=lastSelection;
+  document.getElementById("selectionArray").innerHTML=selection;
+  drawBoard(testBoard);
 }
 
 

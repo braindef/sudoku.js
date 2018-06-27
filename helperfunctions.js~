@@ -4,8 +4,8 @@
 function update()
 {
   document.getElementById("guesses").innerHTML=guesses;
-  document.getElementById("depth").innerHTML=depth;
-  document.getElementById("selectionArray").innerHTML=lastSelection;
+  //document.getElementById("selectionArray").innerHTML=lastSelection;
+  drawBoard(testBoard);
 }
 
 
@@ -18,10 +18,9 @@ function drawBoard(board)
       field = document.getElementById(fields[i][j]);
       if (board[i][j]>0)
       {
-
+      
         field.value=board[i][j];
         field.readOnly = false;
-        Wait(10);
       }
       else
       {
@@ -31,16 +30,6 @@ function drawBoard(board)
     }
 }
 
-
-        function Wait(intMilisecondsWait)
-        {
-            var dtmStartTime = new Date().getTime();
-            var dtmCurrentTime = dtmStartTime
-            while(dtmCurrentTime - dtmStartTime < intMilisecondsWait)
-            {
-                dtmCurrentTime = new Date().getTime();
-            }
-        }
 
 
 /*          markCol(n);
