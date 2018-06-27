@@ -7,19 +7,19 @@ div {
 }
 
 table {
-
-  border: 5px solid black;
+  border-collapse: collapse;
+  border: 10px solid black;
 }
 
 td {
-  border: 3px solid blue;
+  border: 3px solid black;
   padding: 2px;
   spacing: 2px;
   margin: 40px;
 }
 
 button, input {
-  border: 1px solid lightgray;
+  border: 1px solid none;
   text-align:center;
   margin: 2px;
   width:50;
@@ -28,3 +28,8 @@ button, input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
 }
+
+table, input {
+  background-color: red;
+  
+  }

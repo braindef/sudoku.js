@@ -147,7 +147,7 @@
 </div>
 <br>
 <div>
-<button onclick="solveUnambiguously(testBoard)" style="width:800">solve unambiguously (n=1)</button>
+<button onclick="solve(testBoard)" style="width:800">solve unambiguously (n=1)</button>
 </div>
 <br>
 <div>
@@ -163,18 +163,23 @@
 </div>
 <br>
 <div>
+<button onclick="getMinCandidate()" style="width:800">minCandidate</button>
+</div>
+<br>
+<div>
 guesses: <span id=guesses>0</span>
 </div>
 <div>
 depth: <span id=depth>0</span>
 </div>
 <div>
-depth: <span id=selectionArray>--</span>
+selectionArray: <span id=selectionArray>--</span>
 </div>
 <br>
 <div>
 <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
 </div>
+
 <script>
 drawBoard(testBoard);
 </script>

@@ -1,6 +1,12 @@
 
+//restart, last working commit: https://github.com/braindef/sudoku.js/tree/9e447e552fe8ebc0968aaeccbd12918775164fa7
 
-
+function update()
+{
+  document.getElementById("guesses").innerHTML=guesses;
+  document.getElementById("depth").innerHTML=depth;
+  document.getElementById("selectionArray").innerHTML=lastSelection;
+}
 
 
 //draw board on console.log
@@ -43,14 +49,14 @@ fields = [["f11", "f12", "f13","f14", "f15", "f16","f17", "f18", "f19"],
           ["f81", "f82", "f83","f84", "f85", "f86","f87", "f88", "f89"],
           ["f91", "f92", "f93","f94", "f95", "f96","f97", "f98", "f99"]];
 
-function getFromScreen(board) {
+function getFromScreen() {
   for (i=0; i<9; i++)
     for (j=0; j<9; j++)
     {  
       field = document.getElementById(fields[i][j]);
       if (field.value>0&&field.value<10)
       {
-        board[i][j]=field.value;
+        testBoard[i][j]=field.value;
       }
     }
 }
@@ -92,21 +98,22 @@ function init() {
   console.log(checkpointArray[80]);
 }
 
-var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+var selectionArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,]
 
-function createCheckpoint(index, selection, board)
+function createCheckpoint(index, selection)
 {
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-      checkpointArray[index][m][n]=board[m][n];
+      checkpointArray[index][m][n]=testBoard[m][n];
   selectionArray[index]=selection;
 }
 
-function copyArray(input, output)
+function getCheckpoint(index)
 {
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-      output[m][n]=input[m][n];
+      testBoard[m][n]=checkpointArray[index][m][n];
+  selection=selectionArray[index];    
 }
 
 
