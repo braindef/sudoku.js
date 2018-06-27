@@ -113,7 +113,7 @@
 <br>
 
 <div id="inner">
-  <button onclick="revert(guesses, true)" style="background-color:orange">clear</button>
+  <button onclick="init()" style="background-color:orange">clear</button>
   <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
   <button onclick="revert(1)">revert to guess checkpoint</button>
 </div>

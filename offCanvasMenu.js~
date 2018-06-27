@@ -12,6 +12,6 @@ function closeNav() {
 }
 
 
-window.document.querySelector("#div_outer").addEventListener("click", function() {
+window.document.getElementsByTagName("html")[0].addEventListener("click", function() {
     closeNav();
 }, true);
