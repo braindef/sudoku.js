@@ -23,7 +23,24 @@ function shuffle() {
       bigCol = Math.floor(Math.random() * 3)
       swapCol(bigCol*3+Math.floor(Math.random() * 3), bigCol*3+Math.floor(Math.random() * 3));
     }
-
+    
+  for(var i=0; i<5; i++)
+    if(i%2==0)
+    {
+      targetBlock = Math.floor(Math.random() * 3);
+      sourceBlock = Math.floor(Math.random() * 3);
+      swapRow(targetBlock*3+0, sourceBlock*3+0);
+      swapRow(targetBlock*3+1, sourceBlock*3+1);
+      swapRow(targetBlock*3+2, sourceBlock*3+2);
+    }
+    else
+    {
+      targetBlock = Math.floor(Math.random() * 3);
+      sourceBlock = Math.floor(Math.random() * 3);
+      swapCol(targetBlock*3+0, sourceBlock*3+0);
+      swapCol(targetBlock*3+1, sourceBlock*3+1);
+      swapCol(targetBlock*3+2, sourceBlock*3+2);
+    }
 }
 
 
