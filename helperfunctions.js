@@ -102,6 +102,9 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
   console.log(checkpointArray[80]);
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      document.getElementById(fields[i][j]).style.backgroundColor="transparent";
 }
 
 
@@ -138,6 +141,8 @@ function pushCheckpoint(index, selection)
   selectionArray[index]=selection;
 }
 
+
+//store a board at the index
 function popCheckpoint(index)
 {
   for (var m=0; m<9; m++)
@@ -147,7 +152,7 @@ function popCheckpoint(index)
 }
 
 
-
+//update additional information on bottom of page
 function update()
 {
   document.getElementById("guesses").innerHTML=guesses;

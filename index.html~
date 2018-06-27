@@ -120,7 +120,7 @@
 <div id="inner">
   <button onclick="reset()" style="background-color:orange">clear</button>
   <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
-  <button onclick="revert(1)">revert to guess checkpoint</button>
+  <button onclick="check()">check answers</button>
 </div>
 
 <br>
@@ -134,9 +134,7 @@
   <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
 </div>
 </div>
-<script>
-drawBoard(testBoard);
-</script>
+
 </html>
 
 

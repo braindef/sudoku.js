@@ -13,7 +13,6 @@ function copy(from, to)
 function load(board) {
   document.getElementById("table").style.backgroundColor="transparent";
   copy(board, testBoard);
-  //testBoard=board;
   drawBoard(testBoard);
   init();
 
@@ -103,6 +102,9 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
   console.log(checkpointArray[80]);
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      document.getElementById(fields[i][j]).style.backgroundColor="transparent";
 }
 
 
