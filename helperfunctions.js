@@ -177,11 +177,16 @@ function prepareCanvas() {
 function drawToCanvas(ctx, i, j, num, color) {
   ctx.font = "30px Arial";
 	ctx.fillStyle="black";
-  ctx.fillText("Slow Motion",20,240+20);
+  ctx.fillText("Slow Motion",20,340);
 	ctx.fillStyle = 'white';
-	ctx.fillRect(i*20+20, j*20+20, 20, 20);
+	ctx.fillRect(i*32+20, j*32+10, 31, 31);
 	ctx.fillStyle = color;
-	  ctx.font = "20px Arial";
-	ctx.fillText(num, i*20+23, j*20+37); 
+  ctx.font = "30px Arial";
+  if(num==0) return;
+	ctx.fillText(num, i*32+23, j*32+37); 
+}
+
+function drawCanvas() {
+
 }
 

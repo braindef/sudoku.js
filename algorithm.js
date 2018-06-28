@@ -168,6 +168,8 @@ function auto() {
 function solve() {
 
   //this lines have nothing to do with algoritm it's for the slow motion only
+  time = document.getElementById("time").value;
+  //alert(time);
   canvas = document.getElementById('mycanvas');
   ctx = canvas.getContext('2d');
 	for(var i=0; i<9; i++)
@@ -191,7 +193,7 @@ function solve() {
       //this lines have nothing to do with algoritm it's for the slow motion only      
     	for(var i=0; i<9; i++)
         for(var j=0; j<9; j++)
-          setTimeout( drawToCanvas, 1*++counter, ctx,j, i, testBoard[i][j], "purple");
+          setTimeout( drawToCanvas, time*++counter, ctx,j, i, testBoard[i][j], "purple");
       //-------------------------------------------------------------------------
 
       continue;
@@ -207,7 +209,7 @@ function solve() {
 
       
       //this line does nothing for the algoritm but is for the slow motion
-      setTimeout( drawToCanvas, 1*++counter, ctx,field[1],field[0], testBoard[field[0]][field[1]], "green");
+      setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], testBoard[field[0]][field[1]], "green");
       //------------------------------------------------------------------
 
     }
@@ -233,7 +235,7 @@ function solve() {
           document.getElementById(fields[field[0]][field[1]]).style.color = "red";
 
           //this line does nothing for the algoritm but is for the slow motion
-          setTimeout( drawToCanvas, 1*++counter, ctx,field[1],field[0], c, "red");
+          setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], c, "red");
           //------------------------------------------------------------------
           
         }
