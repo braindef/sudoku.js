@@ -50,8 +50,6 @@ input {
   font-weight:bold;
 }
 
-
-
-canvas {
-  border: 1px solid #9C9898;
-}
+/*table, input {
+  background-color: lightcyan;
+}*/

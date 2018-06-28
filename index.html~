@@ -39,7 +39,7 @@
     </div>
 
     <div id="inner"  style="float:right">
-      <canvas id="mycanvas" width="220" height="300">
+      <canvas id="mycanvas" width="250" height="300">
       </canvas>
     </div>
 

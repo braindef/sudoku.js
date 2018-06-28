@@ -166,3 +166,22 @@ function update()
   drawBoard(testBoard);
 }
 
+
+function prepareCanvas() {
+  canvas = document.getElementById('mycanvas');
+  ctx = canvas.getContext('2d');
+  ctx.font = "30px Arial";
+  ctx.fillText("Hello World",10,50);
+}
+
+function drawToCanvas(ctx, i, j, num, color) {
+  ctx.font = "30px Arial";
+	ctx.fillStyle="black";
+  ctx.fillText("Slow Motion",20,240+20);
+	ctx.fillStyle = 'white';
+	ctx.fillRect(i*20+20, j*20+20, 20, 20);
+	ctx.fillStyle = color;
+	  ctx.font = "20px Arial";
+	ctx.fillText(num, i*20+23, j*20+37); 
+}
+

@@ -191,7 +191,7 @@ function solve() {
       //this lines have nothing to do with algoritm it's for the slow motion only      
     	for(var i=0; i<9; i++)
         for(var j=0; j<9; j++)
-          setTimeout( drawToCanvas, 1*++counter, ctx,j, i, testBoard[i][j], "purple");
+          setTimeout( drawToCanvas, 1*++counter, ctx,j, i, testBoard[i][j], "black");
       //-------------------------------------------------------------------------
 
       continue;
