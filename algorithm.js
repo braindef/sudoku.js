@@ -172,6 +172,7 @@ function solve() {
   //alert(time);
   canvas = document.getElementById('mycanvas');
   ctx = canvas.getContext('2d');
+  drawCanvas(ctx);
 	for(var i=0; i<9; i++)
 	  for(var j=0; j<9; j++)
 	    setTimeout( drawToCanvas, 1, ctx,j, i, testBoard[i][j], "black");

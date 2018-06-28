@@ -169,9 +169,10 @@ function solve() {
 
   //this lines have nothing to do with algoritm it's for the slow motion only
   time = document.getElementById("time").value;
-  alert(time);
+  //alert(time);
   canvas = document.getElementById('mycanvas');
   ctx = canvas.getContext('2d');
+  drawCanvas();
 	for(var i=0; i<9; i++)
 	  for(var j=0; j<9; j++)
 	    setTimeout( drawToCanvas, 1, ctx,j, i, testBoard[i][j], "black");

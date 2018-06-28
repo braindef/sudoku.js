@@ -110,6 +110,7 @@ function init() {
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
       document.getElementById(fields[i][j]).style.backgroundColor="transparent";
+
 }
 
 
@@ -177,12 +178,27 @@ function prepareCanvas() {
 function drawToCanvas(ctx, i, j, num, color) {
   ctx.font = "30px Arial";
 	ctx.fillStyle="black";
-  ctx.fillText("Slow Motion",20,340);
-	ctx.fillStyle = 'white';
-	ctx.fillRect(i*32+20, j*32+10, 31, 31);
+  ctx.fillText("Slow Motion",100,640);
+	ctx.fillStyle = 'red';
+	ctx.fillRect(i*63+17, j*63+17, 52, 52);
 	ctx.fillStyle = color;
-  ctx.font = "30px Arial";
+  ctx.font = "40px Arial";
   if(num==0) return;
-	ctx.fillText(num, i*32+23, j*32+37); 
+	ctx.fillText(num, i*63+33, j*63+57);
+	ctx.lineWidth=5;
+	ctx.strokeRect(10, 10, 570, 570);
+	drawCanvas(ctx);
+}
+
+function drawCanvas(ctx) {
+  var img = new Image();
+  img.src = "./sudoku-leer.png";
+  ctx.drawImage(img, 10, 10, 570, 570);
+}
+
+function initCanvas() {
+  canvas = document.getElementById('mycanvas');
+  ctx = canvas.getContext('2d');
+  drawCanvas(ctx);
 }
 
