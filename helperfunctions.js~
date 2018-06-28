@@ -60,7 +60,7 @@ function drawToConsole(board) {
 //draw board on to the html grid in the screen (the table of input boxes)
 function drawBoard(board)
 {
-  alert("DRAWBOARD");
+  //alert("DRAWBOARD");
   for (i=0; i<9; i++)
     for (j=0; j<9; j++)
     {  

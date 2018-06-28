@@ -41,6 +41,10 @@ function getFromScreen() {
       {
         testBoard[i][j]=field.value;
       }
+      else
+      {
+        testBoard[i][j]=0;
+      }
     }
 }
 
