@@ -119,15 +119,6 @@ function init() {
 
 
 
-function reset() {
-  init();
-  for (i=0; i<9; i++)
-    for (j=0; j<9; j++)
-    {
-      document.getElementById(fields[i][j]).value = "";
-      testBoard[i][j]=0;
-    }
-}
 
 //variable for board and last selected candidate per saved board
 var checkpointArray = [];
@@ -145,6 +136,11 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,
 //Board history handling
 function pushCheckpoint(index, selection)
 {
+  if(index>81)
+  {
+    alert("Error");
+    return;
+  }
   console.log("pushCheckpoint()");
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
@@ -163,6 +159,18 @@ function popCheckpoint(index)
 }
 
 
+
+function reset() {
+  init();
+  for (i=0; i<9; i++)
+    for (j=0; j<9; j++)
+    {
+      document.getElementById(fields[i][j]).value = "";
+      testBoard[i][j]=0;
+    }
+}
+
+
 //update additional information on bottom of page
 function update()
 {
@@ -173,44 +181,8 @@ function update()
 }
 
 
-function prepareCanvas() {
-  canvas = document.getElementById('mycanvas');
-  ctx = canvas.getContext('2d');
-  ctx.font = "30px Arial";
-  ctx.fillText("Hello World",10,50);
-}
 
-function drawToCanvas(ctx, i, j, num, color) {
-  ctx.font = "30px Arial";
-	ctx.fillStyle="black";
-  //ctx.fillText("Slow Motion",100,640);
-	ctx.fillStyle = 'white';
-	ctx.fillRect(i*63+22, j*64+19, 52, 52);
-	ctx.fillStyle = color;
-  ctx.font = "bold 30pt Courier";
-  if(num==0) return;
-	ctx.fillText(num, i*63+35, j*63+62);
-	drawCanvas(ctx);
-}
-
-  //must be here outside the method that the image is loaded before the display command runs
-  var img = new Image();
-  img.src = "./sudoku-leer.svg";
-
-function drawCanvas(ctx) {
-
-  ctx.drawImage(img, 10, 10, 580, 580);
-	ctx.lineWidth=5;
-	ctx.strokeRect(10, 10, 580, 580);
-}
-
-function initCanvas() {
-  canvas = document.getElementById('mycanvas');
-  ctx = canvas.getContext('2d');
-  drawCanvas(ctx);
-}
-
-
+//to copy board to or from location.hash (that is the part of the URL behind the #-sign...
 function toHash() {
   getFromScreen();
   hash="";
