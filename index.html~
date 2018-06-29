@@ -5,7 +5,7 @@
 
     <script src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
-    <!--<script src="./generator.js"></script>-->
+    <script src="./generator.js"></script>
     <script src="./canvas.js"></script>
 
     <script src="./offCanvasMenu.js"></script>
@@ -146,12 +146,11 @@
       <font color="black">&#9679; initial values</font>
       <br>
       <font color="red">&#9679; guessed out of several possibilities</font>
-      <br>
-      <font color="purple">&#9679; reverted from a checkpoint</font>
+
       <br>
       <font color="green">&#9679; unambigiously solved</font>
       <br>
-      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100; background-color:lightgreen"/>
+      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="100" style="width:100; background-color:lightgreen"/>
     </div>
 
     <div id="inner">
