@@ -208,8 +208,8 @@ function reset() {
 function update()
 {
   //document.getElementById("guesses").innerHTML=guesses;
-  //document.getElementById("selectionArray").innerHTML=selection;
-  //document.getElementById("elapsed").innerHTML=elapsed;
+  document.getElementById("selectionArray").innerHTML=selection;
+  document.getElementById("elapsed").innerHTML=elapsed;
   drawBoard(testBoard);
 }
 

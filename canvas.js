@@ -1,7 +1,7 @@
 var canvas;
 var ctx;
 var img;
-initCanvas();
+
 
 function prepareCanvas() {
   ctx.font = "30px Arial";

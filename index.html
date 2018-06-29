@@ -125,19 +125,17 @@
       <input id="numSolutions" style="background-color:white; width:100;"/>
       <button onclick="showNextSolution()" style="background-color:white; width:240; margin: auto; float:right;">next Solution ></button>
       <button onclick="reset()" style="background-color:lightgray">clear</button>
-      <button onclick="auto(testBoard)" style="background-color:lightgreen; width:420;">SOLVE with backtracking</button>
-        <input id="steps" style="width:60; background-color:lightgreen;" min="1" type="number" value="2"/>
-        <input id="totalSteps" style="width:70; background-color:lightgray;" min="1"/>
-      <button onclick="check()" style="background-color:orange">check answers</button>
+      <button onclick="auto(testBoard)" style="background-color:lightgreen; ">SOLVE with backtracking</button>
+      <!--<button onclick="check()" style="background-color:orange">check answers</button>-->
       <button onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
     </div>
 
 
-    <div id="inner">
+   <!-- <div id="inner">
       <p>guesses: <span id=guesses>0</span></p>
       <p style="display:none;" >selectionArray: <span id=selectionArray>--</span></p>
       <p>Time: <span id="elapsed">--</span></p>
-    </div>
+    </div> -->
 
     <div id="inner" >
       <h1>Slow Motion</h1>

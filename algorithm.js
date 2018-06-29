@@ -262,7 +262,11 @@ function solve() {
     solve();
 
     testBoard[pos[0]][pos[1]] = 0;
-
+    //-------------------------------------------------------------------------
+    //this lines have nothing to do with algoritm it's for the slow motion only
+    //-------------------------------------------------------------------------
+    if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], 0, "green");
+    //-------------------------------------------------------------------------
     return;
   }
                                 
@@ -287,6 +291,11 @@ function solve() {
         
         testBoard[pos[0]][pos[1]] = 0;
 
+        //-------------------------------------------------------------------------
+        //this lines have nothing to do with algoritm it's for the slow motion only
+        //-------------------------------------------------------------------------
+        if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], 0, "red");
+        //-------------------------------------------------------------------------
       }
     }
   }
@@ -294,7 +303,7 @@ function solve() {
 }
 
 function auto() {
-  //getFromScreen();
+  getFromScreen();
   initCanvas();
   var start = Date.now();
 

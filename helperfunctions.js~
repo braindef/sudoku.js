@@ -135,7 +135,7 @@ function pushSolution()
 
   console.log("|solutionIndex: "+solutionIndex);
 
-  var newArray = currentArray.map(function(arr) {
+  var newArray = testBoard.map(function(arr) {
     return arr.slice();
 });
   solutionsArray.push(newArray);
