@@ -180,20 +180,23 @@ function drawToCanvas(ctx, i, j, num, color) {
 	ctx.fillStyle="black";
   //ctx.fillText("Slow Motion",100,640);
 	ctx.fillStyle = 'white';
-	ctx.fillRect(i*63+17, j*63+17, 52, 52);
+	ctx.fillRect(i*63+22, j*64+19, 52, 52);
 	ctx.fillStyle = color;
-  ctx.font = "40px Arial";
+  ctx.font = "bold 30pt Courier";
   if(num==0) return;
-	ctx.fillText(num, i*63+33, j*63+57);
-	ctx.lineWidth=5;
-	ctx.strokeRect(10, 10, 570, 570);
+	ctx.fillText(num, i*63+35, j*63+62);
 	drawCanvas(ctx);
 }
 
-function drawCanvas(ctx) {
+  //must be here outside the method that the image is loaded before the display command runs
   var img = new Image();
-  img.src = "./sudoku-leer.png";
-  ctx.drawImage(img, 10, 10, 570, 570);
+  img.src = "./sudoku-leer.svg";
+
+function drawCanvas(ctx) {
+
+  ctx.drawImage(img, 10, 10, 580, 580);
+	ctx.lineWidth=5;
+	ctx.strokeRect(10, 10, 580, 580);
 }
 
 function initCanvas() {

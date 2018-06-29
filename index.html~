@@ -42,7 +42,7 @@
 
     <div id="inner"> 
       <!-- The Sudoku Grid Table with 3x3 cells that contains each 9 input fileds-->
-      <table id="table" background="sudoku-leer.png">
+      <table id="table" background="sudoku-leer.svg">
         <tr>
           <td>
             <input id=f11  step="1"/> <input id=f12  step="1"/> <input id=f13  step="1"/>
@@ -131,7 +131,8 @@
     </div>
 
     <div id="inner" >
-      <canvas id="mycanvas" width="320" height="370"></canvas>
+      <h1>Slow Motion</h1>
+      <canvas id="mycanvas" width="600" height="600"></canvas>  <br>    <!--<canvas id="mycanvas" width="600" height="100" style="float:left"></canvas>-->
       <br>
       <font color="black">&#9679; initial values</font>
       <br>
