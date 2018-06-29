@@ -131,22 +131,29 @@ solutionIndex=0;
 //Board history handling
 function pushSolution()
 { 
-  solutionIndex++;
-  console.log("pushSolution("+index+");");
+  drawToConsole(testBoard);
 
-  if(solutionsArray.length<index+1) solutionsArray.push([[0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0],
-																											 [0,0,0,0,0,0,0,0,0]]);
+  console.log("|solutionIndex: "+solutionIndex);
+
+  var newArray = currentArray.map(function(arr) {
+    return arr.slice();
+});
+  solutionsArray.push(newArray);
+
+/*
+  solutionsArray.push([[0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0],
+                       [0,0,0,0,0,0,0,0,0]]);
 
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-      solutionsArray[index][m][n]=testBoard[m][n]
+      solutionsArray[solutionIndex++][m][n]=testBoard[m][n]; */
 }
 
 var index=0;

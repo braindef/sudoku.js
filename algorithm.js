@@ -185,6 +185,7 @@ function countCandidates(candidates)
 var instance=0;
 var counter=0;
 var finished=false;
+var solutions=-1;
 
 //---------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------
@@ -231,10 +232,14 @@ function solve() {
     console.log(">>>no next move possible");
     if(isSolved()) 
     {
+      //alert("SOLVED")
       finished=true;
-      drawToConsole(testBoard);
+      console.log("|isSolved()");
+      //drawToConsole(testBoard);
       drawBoard(testBoard);
       pushSolution();
+      solutions++;
+      console.log("Solutions so far: "+solutions);
       return;
     }
     else
@@ -272,7 +277,12 @@ function solve() {
        
         testBoard[pos[0]][pos[1]] = c;
 
+        //-------------------------------------------------------------------------
+        //this lines have nothing to do with algoritm it's for the slow motion only
+        //-------------------------------------------------------------------------
         if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], c, "red");
+        //-------------------------------------------------------------------------
+        
         solve();
         
         testBoard[pos[0]][pos[1]] = 0;
@@ -280,6 +290,7 @@ function solve() {
       }
     }
   }
+
 }
 
 function auto() {
