@@ -1,4 +1,14 @@
 // 0 defines an empty field
+var testBoard0  = [[0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0],
+              [0,0,0,0,0,0,0,0,0]];
+
 //easy sudoku
 
 var testBoard1 = [[3,0,0,2,4,0,0,6,0], 
@@ -92,16 +102,6 @@ var testBoard8 = [[3,0,0,2,4,0,0,6,0],
               [0,0,0,0,0,0,0,0,0]];
 
 
-var testBoardX  = [[0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0],
-              [0,0,0,0,0,0,0,0,0]];
-
 //draw board to debug console (Helper Function)
 function drawToConsole() {
   var crc=0;
@@ -119,16 +119,17 @@ function drawToConsole() {
 
 }
 
+//checks if the sudoku is solved
 function isSolved() {
   for(var m=0; m<9; m++)
     for(var n=0; n<9; n++)
       if(testBoard[m][n]==0)
         return false;
-
+  document.getElementById("table").style.backgroundColor="lightgreen";
   return true;
 }
 
-
+//get candidates of a field
 function getCandidates(i, j)
 {
   //                       0  1  2  3  4  5  6  7  8  9
@@ -149,6 +150,7 @@ function getCandidates(i, j)
   return initialCandidates;
 }
 
+//gives the field with the least candidates
 function getBestCandidate()
 {
   var numCandidates=10;
@@ -169,6 +171,7 @@ function getBestCandidate()
 	return bestCandidate;
 }
 
+//count the numbers of candidates in a candidates array
 function countCandidates(candidates)
 {
   //console.log("countCandidates("+candidates+");");
@@ -180,12 +183,15 @@ function countCandidates(candidates)
 }
 
 var instance=0;
+var counter=0;
 
 //---------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------
 function solve() {
   console.log("START solve instance No: "+instance++);
-  if(instance>10000) return;
+  
+  
+  if(instance>10000) return;  //TODO: maybe remove with while true;
   //drawToConsole(testBoard);
   var best=[];
   var pos=[];
@@ -207,6 +213,21 @@ function solve() {
 		console.log(count);
   } catch(err) { count=0; }
 
+  //-------------------------------------------------------------------------
+  //this lines have nothing to do with algoritm it's for the slow motion only
+  //-------------------------------------------------------------------------  
+  time = document.getElementById("time").value;
+  console.log(ctx);
+  if(count == 1) setTimeout( drawToCanvas, counter++*time, ctx, j, i, testBoard[pos[0]][pos[1]], "green");
+  if(count > 1) setTimeout( drawToCanvas, counter++*time, ctx, j, i, testBoard[pos[0]][pos[1]], "red");
+
+  if(count == 1) document.getElementById(fields[pos[0]][pos[1]]).style.backgroundColor = "green";
+  if(count > 1) document.getElementById(fields[pos[0]][pos[1]]).style.backgroundColor = "red";
+
+
+  //-------------------------------------------------------------------------
+
+
 
   if(count==0)
   {
@@ -214,6 +235,7 @@ function solve() {
     if(isSolved()) 
     {
       alert("SOLVED");
+      drawToConsole(testBoard);
       drawBoard(testBoard);
       pushSolution();
       return;
@@ -230,7 +252,7 @@ function solve() {
            candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
   
     testBoard[pos[0]][pos[1]] = cand;
-
+    //-------------------------------------------------------------------------
     solve();
 
     testBoard[pos[0]][pos[1]] = 0;
