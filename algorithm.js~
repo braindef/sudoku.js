@@ -271,12 +271,12 @@ function solve() {
       {
        
         testBoard[pos[0]][pos[1]] = c;
-        //setBoard(pos[0], pos[1], c);
-        setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], c, "red");
+
+        if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], c, "red");
         solve();
         
         testBoard[pos[0]][pos[1]] = 0;
-        //setBoard(pos[0], pos[1], 0);
+
       }
     }
   }

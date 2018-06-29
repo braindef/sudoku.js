@@ -284,6 +284,7 @@ function solve() {
 
 function auto() {
   //getFromScreen();
+  initCanvas();
   var start = Date.now();
 
   solve();
