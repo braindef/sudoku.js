@@ -150,16 +150,9 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,
 //Board history handling
 function pushSolution(index)
 {
-  if(index>81)
-  {
-    //alert("Error");
-    return;
-  }
-  console.log("pushCheckpoint()");
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-      solutionsArray[index][m][n]=testBoard[m][n];
-
+      solutionsArray[index][m][n] = testBoard[m][n];
 }
 
 
