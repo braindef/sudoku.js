@@ -121,7 +121,7 @@ function getCandidates(i, j)
 
 function getMinCandidate()
 {
-	min=9;
+	min=10;
 	field=0;
 	candidate=[];
 	for(var i=0; i<9; i++)

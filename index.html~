@@ -42,7 +42,7 @@
 
     <div id="inner"> 
       <!-- The Sudoku Grid Table with 3x3 cells that contains each 9 input fileds-->
-      <table id="table" background="sudoku-leer.svg">
+      <table id="table" background="sudoku-leer.png">
         <tr>
           <td>
             <input id=f11  step="1"/> <input id=f12  step="1"/> <input id=f13  step="1"/>
@@ -121,6 +121,7 @@
       <button onclick="reset()" style="background-color:lightgray">clear</button>
       <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
       <button onclick="check()" style="background-color:orange">check answers</button>
+      <button onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
     </div>
 
 
@@ -152,6 +153,7 @@
   </div>
  <script>
  initCanvas();
+ fromHash(location.hash);
  </script>
 
 </html>

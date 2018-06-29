@@ -1,6 +1,10 @@
-//if page is finished loading run the init() function
+//if page is finished loading run the initialisations
 document.addEventListener("DOMContentLoaded", function() {
   load(testBoard7);
+  //initialize the animation canvas
+  initCanvas();
+  //take the board from the URL string if there is any
+  fromHash(location.hash);
 });
 
 function copy(from, to)
@@ -121,6 +125,7 @@ function reset() {
     for (j=0; j<9; j++)
     {
       document.getElementById(fields[i][j]).value = "";
+      testBoard[i][j]=0;
     }
 }
 
@@ -204,4 +209,34 @@ function initCanvas() {
   ctx = canvas.getContext('2d');
   drawCanvas(ctx);
 }
+
+
+function toHash() {
+  hash="";
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      hash+=testBoard[i][j];
+  return hash;
+}
+
+function fromHash(hash) {
+  if(hash.length!=82)
+  {
+    if(hash.length>1) alert("url input data wrong");
+    return;
+  }
+  hash = hash.substring(1,82);
+
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+    {
+       var num = hash.substring(i*9+j,i*9+j+1);
+       testBoard[i][j]=parseInt(num);
+       //if(num!=0)
+         //document.getElementById(fields[i][j]).value=num;
+    }
+    drawBoard(testBoard);
+    init();
+}
+
 

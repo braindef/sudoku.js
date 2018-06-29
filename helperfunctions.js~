@@ -121,6 +121,7 @@ function reset() {
     for (j=0; j<9; j++)
     {
       document.getElementById(fields[i][j]).value = "";
+      testBoard[i][j]=0;
     }
 }
 
@@ -179,7 +180,7 @@ function drawToCanvas(ctx, i, j, num, color) {
   ctx.font = "30px Arial";
 	ctx.fillStyle="black";
   //ctx.fillText("Slow Motion",100,640);
-	ctx.fillStyle = 'red';
+	ctx.fillStyle = 'white';
 	ctx.fillRect(i*63+22, j*64+19, 52, 52);
 	ctx.fillStyle = color;
   ctx.font = "bold 30pt Courier";
@@ -204,4 +205,34 @@ function initCanvas() {
   ctx = canvas.getContext('2d');
   drawCanvas(ctx);
 }
+
+
+function toHash() {
+  hash="";
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      hash+=testBoard[i][j];
+  return hash;
+}
+
+function fromHash(hash) {
+  if(hash.length!=82)
+  {
+    if(hash.length>1) alert("url input data wrong");
+    return;
+  }
+  hash = hash.substring(1,82);
+
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+    {
+       var num = hash.substring(i*9+j,i*9+j+1);
+       testBoard[i][j]=parseInt(num);
+       //if(num!=0)
+         //document.getElementById(fields[i][j]).value=num;
+    }
+    drawBoard(testBoard);
+    init();
+}
+
 

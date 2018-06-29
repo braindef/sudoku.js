@@ -121,6 +121,7 @@
       <button onclick="reset()" style="background-color:lightgray">clear</button>
       <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
       <button onclick="check()" style="background-color:orange">check answers</button>
+      <button onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
     </div>
 
 
@@ -151,7 +152,10 @@
 
   </div>
  <script>
+ //initialize the animation canvas
  initCanvas();
+ //take the board from the URL string if there is any
+ fromHash(location.hash);
  </script>
 
 </html>
