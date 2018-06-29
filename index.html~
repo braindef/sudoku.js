@@ -6,6 +6,7 @@
     <script src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
     <script src="./generator.js"></script>
+    <script src="./canvas.js"></script>
 
     <script src="./offCanvasMenu.js"></script>
     <link rel="stylesheet" href="./offCanvasMenu.css">
@@ -145,6 +146,10 @@
       <font color="green">&#9679; unambigiously solved</font>
       <br>
       Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100"/>
+    </div>
+
+    <div id="inner">
+      <img src="./QRcode.png"/>
     </div>
 
     <div id="inner">

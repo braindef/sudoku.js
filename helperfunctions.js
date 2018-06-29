@@ -138,7 +138,7 @@ function pushCheckpoint(index, selection)
 {
   if(index>81)
   {
-    alert("Error");
+    //alert("Error");
     return;
   }
   console.log("pushCheckpoint()");

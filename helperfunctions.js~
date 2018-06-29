@@ -181,6 +181,8 @@ function update()
 }
 
 
+
+//to copy board to or from location.hash (that is the part of the URL behind the #-sign...
 function toHash() {
   getFromScreen();
   hash="";
