@@ -121,7 +121,7 @@ function getCandidates(i, j)
 
 function getMinCandidate()
 {
-	min=9;
+	min=10;
 	field=0;
 	candidate=[];
 	for(var i=0; i<9; i++)
@@ -165,6 +165,8 @@ function auto() {
     document.getElementById("table").style.backgroundColor="lightgreen";
 }
 
+solutions=0;
+
 function solve() {
 
   //this lines have nothing to do with algoritm it's for the slow motion only
@@ -186,7 +188,12 @@ function solve() {
 
 
     [field, candidates, min] = getMinCandidate();
-    if(isSolved()) break;
+    if(isSolved()) 
+    {
+      pushSolution(solutions++);
+      revert(1);
+      continue;
+    }
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
     {
       revert(1);
@@ -242,6 +249,7 @@ function solve() {
         }
       }
     }
+  if(solutions>0) document.getElementById("next").style.backgroundColor="lightgreen";
   }
 }
 

@@ -100,7 +100,7 @@ function init() {
     }
       document.getElementById("table").style.backgroundColor="white";
 
-  for(var k=0; k<81; k++)
+  for(var k=0; k<81; k++) {
     checkpointArray.push([ [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
@@ -110,6 +110,20 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
+                           
+    solutionsArray.push([ [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0],
+                           [0,0,0,0,0,0,0,0,0] ] );
+  }
+
+  solutions=0;
+                 
   console.log(checkpointArray[80]);
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
@@ -122,6 +136,7 @@ function init() {
 
 //variable for board and last selected candidate per saved board
 var checkpointArray = [];
+var solutionsArray = [];
 var selectionArray = [0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0,
@@ -132,9 +147,8 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0];
 
-
 //Board history handling
-function pushCheckpoint(index, selection)
+function pushSolution(index)
 {
   if(index>81)
   {
@@ -144,7 +158,25 @@ function pushCheckpoint(index, selection)
   console.log("pushCheckpoint()");
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
+      solutionsArray[index][m][n]=testBoard[m][n];
+
+}
+
+
+//Board history handling
+function pushCheckpoint(index, selection)
+{
+  if(index>81||index<0)
+  {
+    //alert("Error");
+    return;
+  }
+  console.log("pushCheckpoint()");
+  for (var m=0; m<9; m++)
+    for (var n=0; n<9; n++)
+    try {
       checkpointArray[index][m][n]=testBoard[m][n];
+    } catch(err) { alert("m: "+m+" n: "+n+" index: "+index);}
   selectionArray[index]=selection;
 }
 
@@ -180,6 +212,21 @@ function update()
   drawBoard(testBoard);
 }
 
+solution=-1;
+
+function showNextSolution() {
+  if(solution<solutions-1) solution++;
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      document.getElementById(fields[i][j]).value=solutionsArray[solution][i][j];
+}
+
+function showPreviousSolution() {
+  if(solution>0) solution--;
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      document.getElementById(fields[i][j]).value=solutionsArray[solution][i][j];
+}
 
 
 //to copy board to or from location.hash (that is the part of the URL behind the #-sign...

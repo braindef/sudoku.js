@@ -120,6 +120,8 @@
     </div>
 
     <div id="inner">
+      <button onclick="showPreviousSolution()" style="background-color:white; width:290; margin: auto; float:left;">◀ privious Solution </button>
+      <button onclick="showNextSolution()" style="background-color:white; width:290; margin: auto; float:right;">next Solution ▶</button>
       <button onclick="reset()" style="background-color:lightgray">clear</button>
       <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
       <button onclick="check()" style="background-color:orange">check answers</button>
@@ -149,7 +151,7 @@
     </div>
 
     <div id="inner">
-      <img src="./QRcode.png"/>
+      <img src="./QRcode.png" width=600/>
     </div>
 
     <div id="inner">

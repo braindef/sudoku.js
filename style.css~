@@ -31,14 +31,13 @@ td {
 }
 
 button, input {
- border: 0px solid white;
-  text-align:center;
+  border: 0px solid white;
+  text-align: center;
   margin: 2px;
-  width:50;
-  height:50;
-  font-size:30;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
+  width: 50;
+  height: 50;
+  font-size: 30;
+display:inline-block; float:left;
 }
 
 button {
@@ -47,9 +46,11 @@ button {
 
 input {
   background: transparent;
-  font-weight:bold;
+  font-weight: bold;
 }
 
-/*table, input {
-  background-color: lightcyan;
-}*/
+
+
+canvas {
+  border: 1px solid #9C9898;
+}
