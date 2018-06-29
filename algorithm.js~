@@ -1,7 +1,7 @@
 // 0 defines an empty field
 //easy sudoku
 
-testBoard1 = [[3,0,0,2,4,0,0,6,0],
+testBoard1 = [[3,0,0,2,4,0,0,6,0], 
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -81,7 +81,7 @@ testBoard7 = [[0,0,5,3,0,0,0,0,0],
               [0,0,0,0,0,9,7,0,0]];
 
 //only one guess
-testBoard8 = [[3,0,0,2,4,0,0,6,0],
+var testBoard = [[3,0,0,2,4,0,0,6,0],
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -92,7 +92,7 @@ testBoard8 = [[3,0,0,2,4,0,0,6,0],
               [0,0,0,0,0,0,0,0,0]];
 
 
-testBoard  = [[0,0,0,0,0,0,0,0,0],
+var testBoardX  = [[0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
@@ -102,11 +102,30 @@ testBoard  = [[0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0]];
 
+//draw board to debug console (Helper Function)
+function drawToConsole() {
+  var crc=0;
+  for (var i=0; i<9; i++)
+  {
+       console.log(testBoard[i][0] + "  " + testBoard[i][1] + "  " + testBoard[i][2] + " | " + testBoard[i][3] + "  " + testBoard[i][4] + 
+           "  " + testBoard[i][5] + " | " + testBoard[i][6] + "  " + testBoard[i][7] + "  " + testBoard[i][8]);
+    if(i%3==2 && i != 8) console.log("----------------------------");
+    crc += ( testBoard[i][0] + testBoard[i][1] + testBoard[i][2] + testBoard[i][3] + testBoard[i][4] + 
+          + testBoard[i][5] + testBoard[i][6] + testBoard[i][7] + testBoard[i][8]);
+
+    
+  }
+  console.log("============"+crc+"======"+instance+"==")
+
+}
+
 function isSolved() {
   for(var m=0; m<9; m++)
     for(var n=0; n<9; n++)
       if(testBoard[m][n]==0)
         return false;
+
+  alert("SOLVED");
   return true;
 }
 
@@ -131,168 +150,129 @@ function getCandidates(i, j)
   return initialCandidates;
 }
 
-function getMinCandidate()
+function getBestCandidate()
 {
-	min=10;
-	field=0;
-	candidate=[];
-	for(var i=0; i<9; i++)
-	  for(var j=0; j<9; j++)
-		{
-		 if(testBoard[i][j]==0)
-		 {
-			 candidates = getCandidates(i,j);
-			 temp = candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+
-              candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9];
-			 if (temp<min)
-			 {
-				 min=temp;
-				 field=[i, j];
-				 c=candidates;
-			 }
-		 }
-		}
+  var numCandidates=10;
+  var bestNumCandidates=10;;
+  var bestCandidate=[];
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      if(testBoard[i][j]==0)
+		  {
+		    numCandidates = countCandidates(getCandidates(i,j));
+		    if(bestNumCandidates>numCandidates)
+		    {
+		      bestNumCandidates = numCandidates;
+		      bestCandidate = [i, j, getCandidates(i,j).slice(0,10)];
+		    }
+		  }
 
-	return [field, c, min];
+	return bestCandidate;
 }
 
-guesses=0;
-steps=3;
-elapsed=0;
-totalSteps=0;
+function countCandidates(candidates)
+{
+  //console.log("countCandidates("+candidates+");");
+  var count=0;
+  for(var c=0; c<10; c++)
+    if(candidates[c]==1)
+      count++;
+  return count;
+}
+
+var instance=0;
+
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+function solve() {
+  console.log("START solve instance No: "+instance++);
+  if(instance>200) return;
+  drawToConsole(testBoard);
+  var best=[];
+  var pos=[];
+  var candidates=[];
+  var cand=0;
+  var count;
+  
+  try
+  {
+		best = getBestCandidate();
+		console.log("BEST:"+best);
+		
+		pos[0] = best[0];
+		pos[1] = best[1];
+		candidates = best[2],best[3],best[4],best[5],best[6],best[7],best[8],best[9],best[10];
+
+		console.log("pos, candidates: "+pos +", " + candidates+");");
+		count = countCandidates(candidates);
+		console.log(count);
+  } catch(err) { count=0; }
+
+
+  if(count==0)
+  {
+    console.log(">>>no next move possible");
+    if(isSolved()) 
+    {
+      alert("SOLVED");
+      pushSolution();
+      return;
+    }
+    else
+    {
+      return;
+    }
+  }
+  
+  if(count==1) {
+    console.log(">>>unambigious");
+    cand = candidates[0]*0+candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
+           candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
+  
+    testBoard[pos[0]][pos[1]] = cand;
+
+    solve();
+
+    testBoard[pos[0]][pos[1]] = 0;
+
+    return;
+  }
+                                
+  if(count>1)
+  {
+    console.log(">>>ambigious"); 
+    var firstCandidate=0;
+    for(var c=0; c<10; c++)
+    {
+      if(candidates[c]==1) 
+      {
+       
+        testBoard[pos[0]][pos[1]] = c;
+        //setBoard(pos[0], pos[1], c);
+
+        solve();
+        
+        testBoard[pos[0]][pos[1]] = 0;
+        //setBoard(pos[0], pos[1], 0);
+      }
+    }
+  }
+}
 
 function auto() {
-  getFromScreen();
-
-
+  //getFromScreen();
   var start = Date.now();
-
 
   solve();
 
   var end = Date.now();
   elapsed = "0."+(end - start)+" Seconds"; // time in milliseconds
-  update();
+  //update();
   if (isSolved())
     document.getElementById("table").style.backgroundColor="lightgreen";
 }
 
-solutions=0;
-
-function solve() {
-
-  //this lines have nothing to do with algoritm it's for the slow motion only
-  time = document.getElementById("time").value;
-  //alert(time);
-  canvas = document.getElementById('mycanvas');
-  ctx = canvas.getContext('2d');
-  drawCanvas(ctx);
-	for(var i=0; i<9; i++)
-	  for(var j=0; j<9; j++)
-	    setTimeout( drawToCanvas, 1, ctx,j, i, testBoard[i][j], "black");
-  counter=1;
-  //-------------------------------------------------------------------------
-  steps=document.getElementById("steps").value;
-  totalSteps+=steps;
-  loop1: 
-  for(var i=0; i<steps; i++)  //TODO: wieder hoch stellen auf 9999
-  {
-    if(guesses<0) return;
-    [field, candidates, min] = getMinCandidate();
-
-    if(isSolved()) 
-    {
-      pushSolution(solutions++);
-      guesses-=1;
-      if(!popCheckpoint(guesses)) { console.log("STOP"); break; }
-      continue;
-    }
-    if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
-    {
-      popCheckpoint(--guesses);
-
-      
-      //this lines have nothing to do with algoritm it's for the slow motion only      
-    	for(var i=0; i<9; i++)
-        for(var j=0; j<9; j++)
-          setTimeout( drawToCanvas, time*++counter, ctx,j, i, testBoard[i][j], "purple");
-      //-------------------------------------------------------------------------
-
-      continue;
-    }
-    console.log(candidates, field);
-    if(min<2)
-    {
-      //if there is only one possible number to enter everything is fine, wie enter it
-      testBoard[field[0]][field[1]] = candidates[0]  +candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
-			  	                            candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
-
-      document.getElementById(fields[field[0]][field[1]]).style.color = "green";
-
-      
-      //this line does nothing for the algoritm but is for the slow motion
-      setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], testBoard[field[0]][field[1]], "green");
-      //------------------------------------------------------------------
-
-    }
-    else //if 2 or more candidates
-    {
-      for(var c=selection+1; c<10; c++)
-      {
-        //next candidate
-        console.log("last:" + selection + "selected: " + c);
-        if(candidates[c]==1)
-        {
-
- 		        pushCheckpoint(guesses++, c);
-		        testBoard[field[0]][field[1]] = c;
-		        document.getElementById(fields[field[0]][field[1]]).style.color = "red";
-
-		        //this line does nothing for the algoritm but is for the slow motion
-		        setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], c, "red");
-		        //------------------------------------------------------------------
-
-
-        var hasFollowing=false;  
-        
-        for(var d=c; d<10; d++)
-          if(candidates[d]==1)
-            hasFollowing=true;
-            
-          if(hasFollowing)
-          {
-            //guesses-=1;
-		        continue loop1;
-          }
-          else
-          {
-            //guesses-=2;
-            continue loop1;
-          }
-        }
-      }
-    }
-  }
-    if(solutions>0)
-    { 
-      
-      document.getElementById("numSolutions").value=solution+1;
-      setTimeout( function() { showNextSolution(); }, 100);
-    }
-
-}
-
-selection=-1;
-
-//function revert(steps) {
-//  guesses-=steps;
-//  return popCheckpoint(guesses--);
-//}
-
-
-
 function check() {
-
     solve();
     for(var i=0; i<9; i++)
       for(var j=0; j<9; j++)

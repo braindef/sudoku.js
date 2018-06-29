@@ -1,4 +1,4 @@
-//if page is finished loading run the initialisations
+/*//if page is finished loading run the initialisations
 document.addEventListener("DOMContentLoaded", function() {
   load(testBoard7);
   //initialize the animation canvas
@@ -54,13 +54,17 @@ function getFromScreen() {
 
 //draw board to debug console (Helper Function)
 function drawToConsole(board) {
+  var crc=0;
   for (var i=0; i<9; i++)
   {
        console.log(board[i][0] + "  " + board[i][1] + "  " + board[i][2] + " | " + board[i][3] + "  " + board[i][4] + 
            "  " + board[i][5] + " | " + board[i][6] + "  " + board[i][7] + "  " + board[i][8]);
     if(i%3==2 && i != 8) console.log("----------------------------");
+    crc = ( board[i][0] + board[i][1] + board[i][2] + board[i][3] + board[i][4] + 
+          + board[i][5] + board[i][6] + board[i][7] + board[i][8]);
+    
   }   
-  console.log("===========================")
+  console.log("============"+crc+"============")
 
 }
 
@@ -119,7 +123,7 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0] ] ); */
+                           [0,0,0,0,0,0,0,0,0] ] ); 
   }
 
   solutions=0;
@@ -147,9 +151,11 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0,
                       0,0,0,0,0,0,0,0,0];
 
+solutionIndex=0;
 //Board history handling
-function pushSolution(index)
-{
+function pushSolution()
+{ 
+  solutionIndex++;
   console.log("pushSolution("+index+");");
 
   if(solutionsArray.length<index+1) solutionsArray.push([[0,0,0,0,0,0,0,0,0],
@@ -164,15 +170,15 @@ function pushSolution(index)
 
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-//      tempArray[m][n]=testBoard[m][n];
       solutionsArray[index][m][n]=testBoard[m][n]
 }
 
-
+var index=0;
 //Board history handling
-function pushCheckpoint(index, selection)
+function pushCheckpoint(candidates)
 {
-  console.log("pushCheckpoint("+index+"); selection="+selection);
+  index++;
+  console.log("pushCheckpoint("+index+"); selection="+candidates);
   if(index>81||index<0)
   {
     //alert("Error");
@@ -184,20 +190,22 @@ function pushCheckpoint(index, selection)
     try {
       checkpointArray[index][m][n]=testBoard[m][n];
     } catch(err) { alert("m: "+m+" n: "+n+" index: "+index);}
-  selectionArray[index]=selection;
+  selectionArray[index]=candidates;
 }
 
 
 //store a board at the index
-function popCheckpoint(index)
+function popCheckpoint()
 {
   console.log("PopCheckpoint("+index+"); selection="+selectionArray[index]);
   if(index<0) return false;
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
       testBoard[m][n]=checkpointArray[index][m][n];
-  selection=selectionArray[index];
-  return true;
+  candidates=selectionArray[index];
+  document.getElementById("table").style.backgroundColor="transparent";
+  index--;
+  return candidates;
 }
 
 
@@ -216,9 +224,9 @@ function reset() {
 //update additional information on bottom of page
 function update()
 {
-  document.getElementById("guesses").innerHTML=guesses;
-  document.getElementById("selectionArray").innerHTML=selection;
-  document.getElementById("elapsed").innerHTML=elapsed;
+  //document.getElementById("guesses").innerHTML=guesses;
+  //document.getElementById("selectionArray").innerHTML=selection;
+  //document.getElementById("elapsed").innerHTML=elapsed;
   drawBoard(testBoard);
 }
 
@@ -271,4 +279,4 @@ function fromHash(hash) {
     init();
 }
 
-
+*/

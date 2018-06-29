@@ -3,7 +3,7 @@
     <title>Sudoku Solver.js</title>
     <link rel="stylesheet" href="./style.css">
 
-    <script src="./helperfunctions.js"></script>
+    <!--<script src="./helperfunctions.js"></script>-->
     <script src="./algorithm.js"></script>
     <script src="./generator.js"></script>
     <script src="./canvas.js"></script>
@@ -126,8 +126,8 @@
       <button onclick="showNextSolution()" style="background-color:white; width:240; margin: auto; float:right;">next Solution ></button>
       <button onclick="reset()" style="background-color:lightgray">clear</button>
       <button onclick="auto(testBoard)" style="background-color:lightgreen; width:420;">SOLVE with backtracking</button>
-        <input id="steps" style="width:10; background-color:lightgreen;" min="1" type="number" value="20"/>
-        <input id="totalSteps" style="width:70; background-color:lightgray;" min="1" type="number"/>
+        <input id="steps" style="width:60; background-color:lightgreen;" min="1" type="number" value="2"/>
+        <input id="totalSteps" style="width:70; background-color:lightgray;" min="1"/>
       <button onclick="check()" style="background-color:orange">check answers</button>
       <button onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
     </div>

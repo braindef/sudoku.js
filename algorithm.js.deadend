@@ -1,7 +1,7 @@
 // 0 defines an empty field
 //easy sudoku
 
-testBoard1 = [[3,0,0,2,4,0,0,6,0], 
+testBoard1 = [[3,0,0,2,4,0,0,6,0],
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -81,7 +81,7 @@ testBoard7 = [[0,0,5,3,0,0,0,0,0],
               [0,0,0,0,0,9,7,0,0]];
 
 //only one guess
-var testBoard = [[3,0,0,2,4,0,0,6,0],
+testBoard8 = [[3,0,0,2,4,0,0,6,0],
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -92,7 +92,7 @@ var testBoard = [[3,0,0,2,4,0,0,6,0],
               [0,0,0,0,0,0,0,0,0]];
 
 
-var testBoardX  = [[0,0,0,0,0,0,0,0,0],
+testBoard  = [[0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
@@ -102,32 +102,14 @@ var testBoardX  = [[0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0]];
 
-//draw board to debug console (Helper Function)
-function drawToConsole() {
-  var crc=0;
-  for (var i=0; i<9; i++)
-  {
-       console.log(testBoard[i][0] + "  " + testBoard[i][1] + "  " + testBoard[i][2] + " | " + testBoard[i][3] + "  " + testBoard[i][4] + 
-           "  " + testBoard[i][5] + " | " + testBoard[i][6] + "  " + testBoard[i][7] + "  " + testBoard[i][8]);
-    if(i%3==2 && i != 8) console.log("----------------------------");
-    crc += ( testBoard[i][0] + testBoard[i][1] + testBoard[i][2] + testBoard[i][3] + testBoard[i][4] + 
-          + testBoard[i][5] + testBoard[i][6] + testBoard[i][7] + testBoard[i][8]);
-
-    
-  }
-  console.log("============"+crc+"======"+instance+"==")
-
-}
-
 function isSolved() {
   for(var m=0; m<9; m++)
     for(var n=0; n<9; n++)
       if(testBoard[m][n]==0)
         return false;
-
-  alert("SOLVED");
   return true;
 }
+
 
 
 function getCandidates(i, j)
@@ -152,27 +134,31 @@ function getCandidates(i, j)
 
 function getBestCandidate()
 {
-  var numCandidates=10;
-  var bestNumCandidates=10;;
-  var bestCandidate=[];
-  for(var i=0; i<9; i++)
-    for(var j=0; j<9; j++)
-      if(testBoard[i][j]==0)
-		  {
-		    numCandidates = countCandidates(getCandidates(i,j));
-		    if(bestNumCandidates>numCandidates)
-		    {
-		      bestNumCandidates = numCandidates;
-		      bestCandidate = [i, j, getCandidates(i,j).slice(0,10)];
-		    }
-		  }
+	min=10;
+	field=0;
+	candidate=[];
+	for(var i=0; i<9; i++)
+	  for(var j=0; j<9; j++)
+		{
+		 if(testBoard[i][j]==0)
+		 {
+			 candidates = getCandidates(i,j);
+			 temp = candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+
+              candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9];
+			 if (temp<min)
+			 {
+				 min=temp;
+				 var field=[i, j];
+				 var c=candidates;
+			 }
+		 }
+		}
 
-	return bestCandidate;
+	return [field, c];
 }
 
 function countCandidates(candidates)
 {
-  //console.log("countCandidates("+candidates+");");
   var count=0;
   for(var c=0; c<10; c++)
     if(candidates[c]==1)
@@ -180,94 +166,49 @@ function countCandidates(candidates)
   return count;
 }
 
-var instance=0;
-
-//---------------------------------------------------------------------------------------------------------------
-//---------------------------------------------------------------------------------------------------------------
 function solve() {
-  console.log("START solve instance No: "+instance++);
-  if(instance>200) return;
-  drawToConsole(testBoard);
-  var best=[];
-  var pos=[];
-  var candidates=[];
-  var cand=0;
-  var count;
+  [pos, candidates] = getBestCandidate();
   
-  try
-  {
-		best = getBestCandidate();
-		console.log("BEST:"+best);
-		
-		pos[0] = best[0];
-		pos[1] = best[1];
-		candidates = best[2],best[3],best[4],best[5],best[6],best[7],best[8],best[9],best[10];
-
-		console.log("pos, candidates: "+pos +", " + candidates+");");
-		count = countCandidates(candidates);
-		console.log(count);
-  } catch(err) { count=0; }
-
-
-  if(count==0)
-  {
-    console.log(">>>no next move possible");
-    if(isSolved()) 
-    {
-      alert("SOLVED");
-      pushSolution();
-      return;
-    }
-    else
-    {
-      return;
-    }
-  }
+  count = countCandidates(candidates);
   
-  if(count==1) {
-    console.log(">>>unambigious");
-    cand = candidates[0]*0+candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
-           candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
-  
-    testBoard[pos[0]][pos[1]] = cand;
-
-    solve();
-
-    testBoard[pos[0]][pos[1]] = 0;
-
-    return;
-  }
+  if(count<2)
+    testBoard[pos[0]][pos[1]] = candidates[0]*0+candidates[1]*1+candidates[2]*2+candidates[3]*3+candidates[4]*4+
+                                candidates[5]*5+candidates[6]*6+candidates[7]*7+candidates[8]*8+candidates[9]*9;
                                 
   if(count>1)
   {
-    console.log(">>>ambigious"); 
+    
     var firstCandidate=0;
     for(var c=0; c<10; c++)
     {
-      if(candidates[c]==1) 
-      {
-       
-        testBoard[pos[0]][pos[1]] = c;
-        //setBoard(pos[0], pos[1], c);
-
-        solve();
-        
-        testBoard[pos[0]][pos[1]] = 0;
-        //setBoard(pos[0], pos[1], 0);
-      }
+      if(candidates[c]==1) firstCandidate=c;
+      candidates[c]=0;
     }
+
+    pushCheckpoint(candidates);
+    testBoard[pos[0]][pos[1]] = firstCandidate;
+    
   }
+  
+  if(count==0)
+  {
+    if(isSolved()) 
+    {
+      pushSolution();
+    }
+    
+  candidates = popCheckpoint();
+  }
+    
 }
 
 function auto() {
-  //getFromScreen();
+  getFromScreen();
   var start = Date.now();
-
   solve();
-
   var end = Date.now();
   elapsed = "0."+(end - start)+" Seconds"; // time in milliseconds
-  //update();
+  update();
   if (isSolved())
     document.getElementById("table").style.backgroundColor="lightgreen";
 }
