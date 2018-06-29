@@ -172,7 +172,7 @@ function pushSolution(index)
 //Board history handling
 function pushCheckpoint(index, selection)
 {
-  console.log("pushCheckpoint("+index+");");
+  console.log("pushCheckpoint("+index+"); selection="+selection);
   if(index>81||index<0)
   {
     //alert("Error");

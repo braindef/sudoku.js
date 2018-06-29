@@ -159,7 +159,7 @@ function getMinCandidate()
 guesses=0;
 steps=3;
 elapsed=0;
-
+totalSteps=0;
 
 function auto() {
   getFromScreen();
@@ -192,19 +192,20 @@ function solve() {
 	    setTimeout( drawToCanvas, 1, ctx,j, i, testBoard[i][j], "black");
   counter=1;
   //-------------------------------------------------------------------------
-
+  steps=document.getElementById("steps").value;
+  totalSteps+=steps;
+  document.getElementById("totalSteps").value=totalSteps;
   loop1: 
-  for(var i=0; i<9999; i++)
+  for(var i=0; i<steps; i++)  //TODO: wieder hoch stellen auf 9999
   {
-
-
-
+    if(guesses<0) return;
     [field, candidates, min] = getMinCandidate();
+
     if(isSolved()) 
     {
       pushSolution(solutions++);
-      ;
-      if(!popCheckpoint(--guesses)) { console.log("STOP"); break; }
+      guesses-=1;
+      if(!popCheckpoint(guesses)) { console.log("STOP"); break; }
       continue;
     }
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
@@ -237,30 +238,38 @@ function solve() {
     }
     else //if 2 or more candidates
     {
-      var hasFollowing=false;
-
-      for(var c=0; c<10; c++)
+      for(var c=selection+1; c<10; c++)
       {
+        //next candidate
+        console.log("last:" + selection + "selected: " + c);
         if(candidates[c]==1)
         {
+
+ 		        pushCheckpoint(guesses++, c);
+		        testBoard[field[0]][field[1]] = c;
+		        document.getElementById(fields[field[0]][field[1]]).style.color = "red";
+
+		        //this line does nothing for the algoritm but is for the slow motion
+		        setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], c, "red");
+		        //------------------------------------------------------------------
+
+
+        var hasFollowing=false;  
+        
         for(var d=c; d<10; d++)
-            if(candidates[d]==1)
-              hasFollowing=true;
-          if(!hasFollowing)
+          if(candidates[d]==1)
+            hasFollowing=true;
+            
+          if(hasFollowing)
           {
-            guesses-=3;
-            popCheckpoint(guess);
+            //guesses-=1;
+		        continue loop1;
+          }
+          else
+          {
+            //guesses-=2;
             continue loop1;
           }
-          
-          pushCheckpoint(guesses++, c);
-          testBoard[field[0]][field[1]] = c;
-          document.getElementById(fields[field[0]][field[1]]).style.color = "red";
-
-          //this line does nothing for the algoritm but is for the slow motion
-          setTimeout( drawToCanvas, time*++counter, ctx,field[1],field[0], c, "red");
-          //------------------------------------------------------------------
-          
         }
       }
     }

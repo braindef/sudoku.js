@@ -178,7 +178,7 @@ function pushCheckpoint(index, selection)
     //alert("Error");
     return;
   }
-  console.log("pushCheckpoint()");
+
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
     try {
