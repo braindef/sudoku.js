@@ -184,6 +184,7 @@ function countCandidates(candidates)
 
 var instance=0;
 var counter=0;
+var finished=false;
 
 //---------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------
@@ -217,13 +218,9 @@ function solve() {
   //this lines have nothing to do with algoritm it's for the slow motion only
   //-------------------------------------------------------------------------  
   time = document.getElementById("time").value;
-  console.log(ctx);
-  if(count == 1) setTimeout( drawToCanvas, counter++*time, ctx, j, i, testBoard[pos[0]][pos[1]], "green");
-  if(count > 1) setTimeout( drawToCanvas, counter++*time, ctx, j, i, testBoard[pos[0]][pos[1]], "red");
 
   if(count == 1) document.getElementById(fields[pos[0]][pos[1]]).style.color = "green";
   if(count > 1) document.getElementById(fields[pos[0]][pos[1]]).style.color = "red";
-
 
   //-------------------------------------------------------------------------
 
@@ -234,7 +231,7 @@ function solve() {
     console.log(">>>no next move possible");
     if(isSolved()) 
     {
-      alert("SOLVED");
+      finished=true;
       drawToConsole(testBoard);
       drawBoard(testBoard);
       pushSolution();
@@ -253,6 +250,10 @@ function solve() {
   
     testBoard[pos[0]][pos[1]] = cand;
     //-------------------------------------------------------------------------
+    //this lines have nothing to do with algoritm it's for the slow motion only
+    //-------------------------------------------------------------------------
+    if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], cand, "green");
+    //-------------------------------------------------------------------------
     solve();
 
     testBoard[pos[0]][pos[1]] = 0;
@@ -270,12 +271,12 @@ function solve() {
       {
        
         testBoard[pos[0]][pos[1]] = c;
-        //setBoard(pos[0], pos[1], c);
 
+        if(!finished) setTimeout( drawToCanvas, counter++*time, pos[1], pos[0], c, "red");
         solve();
         
         testBoard[pos[0]][pos[1]] = 0;
-        //setBoard(pos[0], pos[1], 0);
+
       }
     }
   }

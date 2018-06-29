@@ -1,5 +1,6 @@
 var canvas;
 var ctx;
+var img;
 
 
 function prepareCanvas() {
@@ -11,7 +12,8 @@ function prepareCanvas() {
   counter=1;
 }
 
-function drawToCanvas(ctx, i, j, num, color) {
+
+function drawToCanvas(i, j, num, color) {
   ctx.font = "30px Arial";
   ctx.fillStyle="black";
   //ctx.fillText("Slow Motion",100,640);
@@ -21,23 +23,22 @@ function drawToCanvas(ctx, i, j, num, color) {
   ctx.font = "bold 30pt Courier";
   if(num==0) return;
   ctx.fillText(num, i*63+35, j*63+62);
-  drawCanvas(ctx);
+  //drawCanvas(ctx);
 }
 
-  //must be here outside the method that the image is loaded before the display command runs
-  var img = new Image();
-  img.src = "./sudoku-leer.svg";
 
-function drawCanvas() {
+function initCanvas() {
   canvas = document.getElementById('mycanvas');
   ctx = canvas.getContext('2d');
+  img = new Image();
+  img.src = "./sudoku-leer.svg"; 
   ctx.drawImage(img, 10, 10, 580, 580);
   ctx.lineWidth=5;
   ctx.strokeRect(10, 10, 580, 580);
-}
-
-function initCanvas() {
-  drawCanvas();
+  for(var i=0; i<9; i++)
+    for(var j=0; j<9; j++)
+      if(testBoard[i][j]!=0)
+        drawToCanvas(j, i, testBoard[i][j], "black");
 }
 
 
