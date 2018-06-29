@@ -1,10 +1,10 @@
 //if page is finished loading run the initialisations
 document.addEventListener("DOMContentLoaded", function() {
   load(testBoard7);
-  //initialize the animation canvas
-  initCanvas();
   //take the board from the URL string if there is any
   fromHash(location.hash);
+  //initialize the animation canvas
+  initCanvas();
 });
 
 
@@ -13,6 +13,7 @@ function load(board) {
   testBoard=board;
   drawBoard(testBoard);
   init();
+  initCanvas();
 }
 
 

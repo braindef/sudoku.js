@@ -1,7 +1,7 @@
 var canvas;
 var ctx;
 var img;
-
+initCanvas();
 
 function prepareCanvas() {
   ctx.font = "30px Arial";
@@ -30,6 +30,7 @@ function drawToCanvas(i, j, num, color) {
 function initCanvas() {
   canvas = document.getElementById('mycanvas');
   ctx = canvas.getContext('2d');
+  ctx.clearRect(0,0,600,600);
   img = new Image();
   img.src = "./sudoku-leer.svg"; 
   ctx.drawImage(img, 10, 10, 580, 580);
