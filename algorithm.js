@@ -48,37 +48,49 @@ testBoard4 = [[0,0,0,0,0,0,0,1,0],
               [0,0,0,8,0,6,0,0,0]];
 
 //von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard5  = [[0,3,2,0,5,4,9,0,0],
-               [0,9,0,0,0,1,0,0,4],
-               [0,8,0,7,0,0,0,3,1],
-               [0,0,5,6,0,0,0,2,7],
-               [8,0,0,0,7,0,0,0,0],
-               [2,7,0,1,4,0,0,0,5],
-               [0,0,0,2,1,0,3,0,0],
-               [0,1,8,9,0,7,6,5,2],
-               [6,0,3,0,0,0,0,0,0]];
+testBoard5 = [[0,3,2,0,5,4,9,0,0],
+              [0,9,0,0,0,1,0,0,4],
+              [0,8,0,7,0,0,0,3,1],
+              [0,0,5,6,0,0,0,2,7],
+              [8,0,0,0,7,0,0,0,0],
+              [2,7,0,1,4,0,0,0,5],
+              [0,0,0,2,1,0,3,0,0],
+              [0,1,8,9,0,7,6,5,2],
+              [6,0,3,0,0,0,0,0,0]];
 
 //evil sudoku von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard6  = [[0,0,5,2,0,0,0,0,0],
-               [4,0,0,3,0,0,7,0,0],
-               [6,0,0,0,0,0,0,1,0],
-               [8,0,0,0,2,0,1,0,0],
-               [0,4,0,8,0,0,5,0,0],
-               [0,0,0,0,9,5,0,0,0],
-               [0,8,3,0,4,0,0,7,0],
-               [0,9,0,0,0,6,0,8,0],
-               [5,0,0,9,0,2,0,0,0]];
+testBoard6 = [[0,0,5,2,0,0,0,0,0],
+              [4,0,0,3,0,0,7,0,0],
+              [6,0,0,0,0,0,0,1,0],
+              [8,0,0,0,2,0,1,0,0],
+              [0,4,0,8,0,0,5,0,0],
+              [0,0,0,0,9,5,0,0,0],
+              [0,8,3,0,4,0,0,7,0],
+              [0,9,0,0,0,6,0,8,0],
+              [5,0,0,9,0,2,0,0,0]];
               
 //das härteste sudoku der welt http://www.oe24.at/welt/Das-ist-das-schwierigste-Sudoku-der-Welt/1597831
-testBoard7  = [[0,0,5,3,0,0,0,0,0],
-               [8,0,0,0,0,0,0,2,0],
-               [0,7,0,0,1,0,5,0,0],
-               [4,0,0,0,0,5,3,0,0],
-               [0,1,0,0,7,0,0,0,6],
-               [0,0,3,2,0,0,0,8,0],
-               [0,6,0,5,0,0,0,0,9],
-               [0,0,4,0,0,0,0,3,0],
-               [0,0,0,0,0,9,7,0,0]];
+testBoard7 = [[0,0,5,3,0,0,0,0,0],
+              [8,0,0,0,0,0,0,2,0],
+              [0,7,0,0,1,0,5,0,0],
+              [4,0,0,0,0,5,3,0,0],
+              [0,1,0,0,7,0,0,0,6],
+              [0,0,3,2,0,0,0,8,0],
+              [0,6,0,5,0,0,0,0,9],
+              [0,0,4,0,0,0,0,3,0],
+              [0,0,0,0,0,9,7,0,0]];
+
+//only one guess
+testBoard8 = [[3,0,0,2,4,0,0,6,0],
+              [0,4,0,0,0,0,0,5,3],
+              [1,8,9,6,3,5,4,0,0],
+              [0,0,0,0,8,0,2,0,0],
+              [0,0,7,4,9,6,8,0,1],
+              [8,9,3,1,5,0,6,0,4],
+              [0,0,1,9,2,0,5,0,0],
+              [0,0,0,3,0,0,7,4,0],
+              [0,0,0,0,0,0,0,0,0]];
+
 
 testBoard  = [[0,0,0,0,0,0,0,0,0],
               [0,0,0,0,0,0,0,0,0],
@@ -191,12 +203,14 @@ function solve() {
     if(isSolved()) 
     {
       pushSolution(solutions++);
-      if(!revert(1)) break;
+      ;
+      if(!popCheckpoint(--guesses)) { console.log("STOP"); break; }
       continue;
     }
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
     {
-      revert(1);
+      popCheckpoint(--guesses);
+
       
       //this lines have nothing to do with algoritm it's for the slow motion only      
     	for(var i=0; i<9; i++)
@@ -223,7 +237,7 @@ function solve() {
     }
     else //if 2 or more candidates
     {
-      var hasNext=false;
+      var hasFollowing=false;
 
       for(var c=0; c<10; c++)
       {
@@ -231,10 +245,11 @@ function solve() {
         {
         for(var d=c; d<10; d++)
             if(candidates[d]==1)
-              hasNext=true;
-          if(!hasNext)
+              hasFollowing=true;
+          if(!hasFollowing)
           {
-            revert(2);
+            guesses-=3;
+            popCheckpoint(guess);
             continue loop1;
           }
           
@@ -261,10 +276,10 @@ function solve() {
 
 selection=-1;
 
-function revert(steps) {
-  guesses-=steps;
-  return popCheckpoint(guesses--);
-}
+//function revert(steps) {
+//  guesses-=steps;
+//  return popCheckpoint(guesses--);
+//}
 
 
 

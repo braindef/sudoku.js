@@ -37,7 +37,8 @@
       <a href="#" onclick="load(testBoard4)">Example 4</a>
       <a href="#" onclick="load(testBoard5)">Example 5</a>
       <a href="#" onclick="load(testBoard6)">Example 6</a>
-      <a href="#" onclick="load(testBoard6)">Example 7</a>  
+      <a href="#" onclick="load(testBoard6)">Example 7</a>
+      <a href="#" onclick="load(testBoard8)">Example 8</a>  
     </div>
 
 
@@ -148,7 +149,7 @@
       <br>
       <font color="green">&#9679; unambigiously solved</font>
       <br>
-      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100; background-color:red"/>
+      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100; background-color:lightgreen"/>
     </div>
 
     <div id="inner">

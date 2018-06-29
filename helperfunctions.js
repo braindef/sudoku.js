@@ -111,7 +111,7 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
                            
-    solutionsArray.push([ [0,0,0,0,0,0,0,0,0],
+   /* solutionsArray.push([ [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
@@ -119,7 +119,7 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0] ] );
+                           [0,0,0,0,0,0,0,0,0] ] ); */
   }
 
   solutions=0;
@@ -150,16 +150,29 @@ var selectionArray = [0,0,0,0,0,0,0,0,0,
 //Board history handling
 function pushSolution(index)
 {
+  console.log("pushSolution("+index+");");
+
+  if(solutionsArray.length<index+1) solutionsArray.push([[0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0],
+																											 [0,0,0,0,0,0,0,0,0]]);
+
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
-      solutionsArray[index][m][n] = testBoard[m][n];
+//      tempArray[m][n]=testBoard[m][n];
+      solutionsArray[index][m][n]=testBoard[m][n]
 }
 
 
 //Board history handling
 function pushCheckpoint(index, selection)
 {
-  console.log("pushCheckpoint("+index+");");
+  console.log("pushCheckpoint("+index+"); selection="+selection);
   if(index>81||index<0)
   {
     //alert("Error");
@@ -178,12 +191,13 @@ function pushCheckpoint(index, selection)
 //store a board at the index
 function popCheckpoint(index)
 {
-  console.log("PopCheckpoint("+index+");");
+  console.log("PopCheckpoint("+index+"); selection="+selectionArray[index]);
   if(index<0) return false;
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
       testBoard[m][n]=checkpointArray[index][m][n];
-  selection=selectionArray[index];    
+  selection=selectionArray[index];
+  return true;
 }
 
 
