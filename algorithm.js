@@ -191,7 +191,7 @@ function solve() {
     if(isSolved()) 
     {
       pushSolution(solutions++);
-      revert(1);
+      if(!revert(1)) break;
       continue;
     }
     if(candidates[0]+candidates[1]+candidates[2]+candidates[3]+candidates[4]+candidates[5]+candidates[6]+candidates[7]+candidates[8]+candidates[9]==0)
@@ -249,20 +249,21 @@ function solve() {
         }
       }
     }
+  }
     if(solutions>0)
     { 
-      showNextSolution();
+      
       document.getElementById("numSolutions").value=solution+1;
+      setTimeout( function() { showNextSolution(); }, 100);
     }
-  }
+
 }
 
 selection=-1;
 
 function revert(steps) {
   guesses-=steps;
-  popCheckpoint(guesses);
-  guesses--;
+  return popCheckpoint(guesses--);
 }
 
 

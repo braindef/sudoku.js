@@ -37,7 +37,6 @@ button, input {
   width: 50;
   height: 50;
   font-size: 30;
-display:inline-block; float:left;
 }
 
 button {

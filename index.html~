@@ -120,9 +120,9 @@
     </div>
 
     <div id="inner">
-      <button onclick="showPreviousSolution()" style="background-color:white; width:220; margin: auto; float:left;">◀ prev. Solution </button>
+      <button onclick="showPreviousSolution()" style="background-color:white; width:240; margin: auto; float:left;">< prev. Solution </button>
       <input id="numSolutions" style="background-color:white; width:100;"/>
-      <button onclick="showNextSolution()" style="background-color:white; width:220; margin: auto; float:right;">next Solution ▶</button>
+      <button onclick="showNextSolution()" style="background-color:white; width:240; margin: auto; float:right;">next Solution ></button>
       <button onclick="reset()" style="background-color:lightgray">clear</button>
       <button onclick="auto(testBoard)" style="background-color:lightgreen">AUTO SOLVE with backtracking</button>
       <button onclick="check()" style="background-color:orange">check answers</button>
@@ -148,7 +148,7 @@
       <br>
       <font color="green">&#9679; unambigiously solved</font>
       <br>
-      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100"/>
+      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="10" style="width:100; background-color:red"/>
     </div>
 
     <div id="inner">

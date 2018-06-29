@@ -159,6 +159,7 @@ function pushSolution(index)
 //Board history handling
 function pushCheckpoint(index, selection)
 {
+  console.log("pushCheckpoint("+index+");");
   if(index>81||index<0)
   {
     //alert("Error");
@@ -177,6 +178,8 @@ function pushCheckpoint(index, selection)
 //store a board at the index
 function popCheckpoint(index)
 {
+  console.log("PopCheckpoint("+index+");");
+  if(index<0) return false;
   for (var m=0; m<9; m++)
     for (var n=0; n<9; n++)
       testBoard[m][n]=checkpointArray[index][m][n];
