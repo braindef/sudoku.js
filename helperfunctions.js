@@ -212,6 +212,7 @@ function initCanvas() {
 
 
 function toHash() {
+  getFromScreen();
   hash="";
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)

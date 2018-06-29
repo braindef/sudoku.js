@@ -16,6 +16,7 @@
     <div id="inner">
       <h1>Sudoku Solver<br></h1>
       <p>you can clear it and enter your own, it should solve all valid Sudokus</p>
+      <p>you can save the Sudoku to the URL or if you refere with an url with # and then 81 numbers where 0 means empty field you can load a sudoku to the website for example <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">HERE</a></p>
     </div>
 
     <div id="inner">
@@ -151,10 +152,6 @@
     </div>
 
   </div>
- <script>
- initCanvas();
- fromHash(location.hash);
- </script>
 
 </html>
 
