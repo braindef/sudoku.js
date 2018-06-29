@@ -249,7 +249,11 @@ function solve() {
         }
       }
     }
-  if(solutions>0) document.getElementById("next").style.backgroundColor="lightgreen";
+    if(solutions>0)
+    { 
+      showNextSolution();
+      document.getElementById("numSolutions").value=solution+1+"/"+solutions;
+    }
   }
 }
 

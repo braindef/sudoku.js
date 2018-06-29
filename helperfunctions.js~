@@ -121,7 +121,9 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0] ] );
   }
-                           
+
+  solutions=0;
+                 
   console.log(checkpointArray[80]);
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
@@ -214,6 +216,7 @@ solution=-1;
 
 function showNextSolution() {
   if(solution<solutions-1) solution++;
+  //document.getElementById("numSolutions").value=solution+1+"/"+solutions;
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
       document.getElementById(fields[i][j]).value=solutionsArray[solution][i][j];
@@ -221,6 +224,7 @@ function showNextSolution() {
 
 function showPreviousSolution() {
   if(solution>0) solution--;
+  document.getElementById("numSolutions").value=solution+1+"/"+solutions;
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
       document.getElementById(fields[i][j]).value=solutionsArray[solution][i][j];
