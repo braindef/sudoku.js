@@ -1,4 +1,4 @@
-/*//if page is finished loading run the initialisations
+//if page is finished loading run the initialisations
 document.addEventListener("DOMContentLoaded", function() {
   load(testBoard7);
   //initialize the animation canvas
@@ -7,19 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
   fromHash(location.hash);
 });
 
-function copy(from, to)
-{
-  for(var i=0; i<9; i++)
-    for(var j=0; j<9; j++)
-      to[i][j]=from[i][j];
-}
 
 function load(board) {
   document.getElementById("table").style.backgroundColor="transparent";
-  copy(board, testBoard);
+  testBoard=board;
   drawBoard(testBoard);
   init();
-
 }
 
 
@@ -52,27 +45,11 @@ function getFromScreen() {
     }
 }
 
-//draw board to debug console (Helper Function)
-function drawToConsole(board) {
-  var crc=0;
-  for (var i=0; i<9; i++)
-  {
-       console.log(board[i][0] + "  " + board[i][1] + "  " + board[i][2] + " | " + board[i][3] + "  " + board[i][4] + 
-           "  " + board[i][5] + " | " + board[i][6] + "  " + board[i][7] + "  " + board[i][8]);
-    if(i%3==2 && i != 8) console.log("----------------------------");
-    crc = ( board[i][0] + board[i][1] + board[i][2] + board[i][3] + board[i][4] + 
-          + board[i][5] + board[i][6] + board[i][7] + board[i][8]);
-    
-  }   
-  console.log("============"+crc+"============")
-
-}
-
 
 //draw board on to the html grid in the screen (the table of input boxes)
 function drawBoard(board)
 {
-  //alert("DRAWBOARD");
+  console.log("drawBoard(board)");
   for (i=0; i<9; i++)
     for (j=0; j<9; j++)
     {  
@@ -88,10 +65,8 @@ function drawBoard(board)
         field.value="";
         field.readOnly = false;
       }
-    }
+   }
 }
-
-
 
 
 function init() {
@@ -123,7 +98,7 @@ function init() {
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
                            [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0] ] ); 
+                           [0,0,0,0,0,0,0,0,0] ] );  */
   }
 
   solutions=0;
@@ -279,4 +254,4 @@ function fromHash(hash) {
     init();
 }
 
-*/
+

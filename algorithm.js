@@ -1,7 +1,7 @@
 // 0 defines an empty field
 //easy sudoku
 
-testBoard1 = [[3,0,0,2,4,0,0,6,0], 
+var testBoard1 = [[3,0,0,2,4,0,0,6,0], 
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -13,7 +13,7 @@ testBoard1 = [[3,0,0,2,4,0,0,6,0],
 
 //medium sudoku, unambigious solution (2 solutions)
 
-testBoard2 = [[0,0,3,0,5,0,0,7,9],
+var testBoard2 = [[0,0,3,0,5,0,0,7,9],
               [2,0,0,6,0,0,1,5,0],
               [0,8,9,0,2,1,0,0,0],
               [1,0,0,0,7,8,9,0,6],
@@ -25,7 +25,7 @@ testBoard2 = [[0,0,3,0,5,0,0,7,9],
 
 
 
-testBoard3 = [[0,0,0,0,0,5,0,0,7],
+var testBoard3 = [[0,0,0,0,0,5,0,0,7],
               [5,0,6,2,0,0,0,0,3],
               [1,0,0,0,3,0,0,0,0],
               [0,0,7,3,0,1,0,0,8],
@@ -37,7 +37,7 @@ testBoard3 = [[0,0,0,0,0,5,0,0,7],
 
 
 //von wikipedia Standardsudoku mit nur 17 vorbelegten Feldern
-testBoard4 = [[0,0,0,0,0,0,0,1,0],
+var testBoard = [[0,0,0,0,0,0,0,1,0],
               [4,0,0,0,0,0,0,0,0],
               [0,2,0,0,0,0,0,0,0],
               [0,0,0,0,5,0,4,0,7],
@@ -48,7 +48,7 @@ testBoard4 = [[0,0,0,0,0,0,0,1,0],
               [0,0,0,8,0,6,0,0,0]];
 
 //von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard5 = [[0,3,2,0,5,4,9,0,0],
+var testBoard5 = [[0,3,2,0,5,4,9,0,0],
               [0,9,0,0,0,1,0,0,4],
               [0,8,0,7,0,0,0,3,1],
               [0,0,5,6,0,0,0,2,7],
@@ -59,7 +59,7 @@ testBoard5 = [[0,3,2,0,5,4,9,0,0],
               [6,0,3,0,0,0,0,0,0]];
 
 //evil sudoku von https://samirhodzic.github.io/sudoku-solver-js/
-testBoard6 = [[0,0,5,2,0,0,0,0,0],
+var testBoard6 = [[0,0,5,2,0,0,0,0,0],
               [4,0,0,3,0,0,7,0,0],
               [6,0,0,0,0,0,0,1,0],
               [8,0,0,0,2,0,1,0,0],
@@ -70,7 +70,7 @@ testBoard6 = [[0,0,5,2,0,0,0,0,0],
               [5,0,0,9,0,2,0,0,0]];
               
 //das härteste sudoku der welt http://www.oe24.at/welt/Das-ist-das-schwierigste-Sudoku-der-Welt/1597831
-testBoard7 = [[0,0,5,3,0,0,0,0,0],
+var testBoard7 = [[0,0,5,3,0,0,0,0,0],
               [8,0,0,0,0,0,0,2,0],
               [0,7,0,0,1,0,5,0,0],
               [4,0,0,0,0,5,3,0,0],
@@ -81,7 +81,7 @@ testBoard7 = [[0,0,5,3,0,0,0,0,0],
               [0,0,0,0,0,9,7,0,0]];
 
 //only one guess
-var testBoard = [[3,0,0,2,4,0,0,6,0],
+var testBoard8 = [[3,0,0,2,4,0,0,6,0],
               [0,4,0,0,0,0,0,5,3],
               [1,8,9,6,3,5,4,0,0],
               [0,0,0,0,8,0,2,0,0],
@@ -125,7 +125,6 @@ function isSolved() {
       if(testBoard[m][n]==0)
         return false;
 
-  alert("SOLVED");
   return true;
 }
 
@@ -186,8 +185,8 @@ var instance=0;
 //---------------------------------------------------------------------------------------------------------------
 function solve() {
   console.log("START solve instance No: "+instance++);
-  if(instance>200) return;
-  drawToConsole(testBoard);
+  if(instance>10000) return;
+  //drawToConsole(testBoard);
   var best=[];
   var pos=[];
   var candidates=[];
@@ -215,6 +214,8 @@ function solve() {
     if(isSolved()) 
     {
       alert("SOLVED");
+      drawToConsole(testBoard);
+      drawBoard(testBoard);
       pushSolution();
       return;
     }
