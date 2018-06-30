@@ -180,16 +180,17 @@ function showPreviousSolution() {
 //to copy board to or from location.hash (that is the part of the URL behind the #-sign...
 function toHash() {
   getFromScreen();
-  hash="";
+  newHash="";
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
-      hash+=testBoard[i][j];
-  document.getElementById("link").innerHTML=window.location.href+hash;
-  document.getElementById("link").href=window.location.href+hash;
+      newHash+=testBoard[i][j];
+  document.getElementById("link").innerHTML=window.location.href+"#"+newHash;
+  document.getElementById("link").href=window.location.href+"#"+newHash;
 
   document.getElementById("qrcode").innerHTML="";
+  
   new QRCode(document.getElementById("qrcode"), {
-	text: window.location.href+hash,
+	text: window.location.href+"#"+newHash,
 	width: 600,
 	height: 600,
 	colorDark : "#000000",
