@@ -19,6 +19,7 @@ function load(board) {
   drawBoard(testBoard);
   init();
   initCanvas();
+  toHash();
 }
 
 
@@ -90,9 +91,8 @@ function drawBoard(board)
    }
 }
 
-
+//set the colors
 function init() {
-
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
     {
@@ -100,55 +100,11 @@ function init() {
       document.getElementById(fields[i][j]).style.color = "black";
     }
       document.getElementById("table").style.backgroundColor="white";
-
-  for(var k=0; k<81; k++) {
-    checkpointArray.push([ [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0] ] );
-                           
-   /* solutionsArray.push([ [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0],
-                           [0,0,0,0,0,0,0,0,0] ] );  */
-  }
-
-  solutions=0;
-                 
-  console.log(checkpointArray[80]);
-  for(var i=0; i<9; i++)
-    for(var j=0; j<9; j++)
-      document.getElementById(fields[i][j]).style.backgroundColor="transparent";
-
 }
 
 
-
-
-//variable for board and last selected candidate per saved board
-var checkpointArray = [];
 var solutionsArray = [];
-var selectionArray = [0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0,
-                      0,0,0,0,0,0,0,0,0];
-
-solutionIndex=0;
+var solutionIndex=0;
 //Board history handling
 function pushSolution()
 { 
@@ -164,24 +120,6 @@ function pushSolution()
 }
 
 var index=0;
-//Board history handling
-function pushCheckpoint(candidates)
-{
-  index++;
-  console.log("pushCheckpoint("+index+"); selection="+candidates);
-  if(index>81||index<0)
-  {
-    //alert("Error");
-    return;
-  }
-
-  for (var m=0; m<9; m++)
-    for (var n=0; n<9; n++)
-    try {
-      checkpointArray[index][m][n]=testBoard[m][n];
-    } catch(err) { alert("m: "+m+" n: "+n+" index: "+index);}
-  selectionArray[index]=candidates;
-}
 
 
 //store a board at the index
@@ -246,6 +184,18 @@ function toHash() {
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
       hash+=testBoard[i][j];
+  document.getElementById("link").innerHTML=window.location.href+hash;
+  document.getElementById("link").href=window.location.href+hash;
+
+  document.getElementById("qrcode").innerHTML="";
+  new QRCode(document.getElementById("qrcode"), {
+	text: window.location.href+hash,
+	width: 600,
+	height: 600,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+    });
   return hash;
 }
 

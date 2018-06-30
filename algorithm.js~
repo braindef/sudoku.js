@@ -185,6 +185,7 @@ var iterations=100;
 var counter=0;
 var finished=false;
 var solutions=-1;
+var messageShown=false;
 
 //---------------------------------------------------------------------------------------------------------------
 //recursive solver algorithm that calls itself until it comes to a solution or deadend
@@ -195,7 +196,8 @@ function solve() {
   //just in case there would be a bug, stop after a few 1000 iterations
   if(instance>iterations) //TODO:instance could also be named iteration
   {
-    alert("Not all possibilities parsed, try a bigger value for iterations, Algorithm stops at "+instance+" iterations");
+    if(messageShown==false) alert("Not all possibilities parsed, try a bigger value for iterations, Algorithm stops at "+instance+" iterations");
+    messageShown=true;
     return;
   }
   //drawToConsole(testBoard);
@@ -216,7 +218,6 @@ function solve() {
 
 		console.log("pos, candidates: "+pos +", " + candidates+");");
 		count = countCandidates(candidates);
-
   } catch(err)
     {
       //if there is no result from getBestCandidates we set the count of the candidates to 0;
@@ -310,27 +311,28 @@ function solve() {
   }
 }
 
+//the function that is called by the button to solve and this functions runs then the solution algoritm solve()
 function auto() {
   getFromScreen();
   time = document.getElementById("time").value;
   iterations = document.getElementById("iterations").value;
   initCanvas();
+
   var start = Date.now();
-
-  solve();
-
+  solve();			//<<---------- the most important command
   var end = Date.now();
   elapsed = "0."+(end - start)+" Seconds"; // time in milliseconds
-  //update();
+
   if (isSolved()) {
     document.getElementById("table").style.backgroundColor="lightgreen";
     drawBoard(testBoard);
   }
   document.getElementById("numSolutions").value=solution+1+"/"+solutions;
-//  if(finished==false) alert("No Solution");
+  if(finished==false) alert("No Solution");
   finished=false;
 }
 
+//Function to check if it is correct //TODO: finish implementing
 function check() {
     solve();
     for(var i=0; i<9; i++)
@@ -340,5 +342,4 @@ function check() {
         else
           document.getElementById(fields[i][j]).style.backgroundColor="lightgreen";
 }
-
 

@@ -58,7 +58,7 @@
       <a lang="en" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="#" onclick="load(testBoard1)">Example 1 (EASY)</a>
       <a href="#" onclick="load(testBoard2)">Example 2</a>
-      <a href="#" onclick="load(testBoard3)">Example 3</a>
+      <a href="#" onclick="load(testBoard3)">Example 3 (Ambigious Solution)</a>
       <a href="#" onclick="load(testBoard4)">Example 4</a>
       <a href="#" onclick="load(testBoard5)">Example 5</a>
       <a href="#" onclick="load(testBoard6)">Example 6</a>
@@ -168,10 +168,10 @@
       <button lang="en" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
       <button lang="de" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">Sudoku in die URL kopieren</button>
 
-      <input lang="en" class="controls" size="6em" style="width:400;background-color: #E5E4E2;" value="Iterations to try:" readonly=true>
-      <input lang="de" class="controls" size="6em" style="width:400;background-color: #E5E4E2;" value="Max. Iterationen" readonly=true>
+      <input lang="en" class="controls" size="6em" style="width:400;" value="Iterations to try:" readonly=true>
+      <input lang="de" class="controls" size="6em" style="width:400;" value="Max. Iterationen" readonly=true>
       
-      <input id="iterations" type="number" min="1" steps="1" value="10000" style="width:180; background-color:#E5E4E2; float:right"/>
+      <input id="iterations" type="number" min="1" steps="1" value="5000" style="width:180; background-color:#E5E4E2; float:right"/>
 
       <input lang="en" class="controls" size="6em" style="width:400" value="Animationdelay [ms]:" readonly=true>
       <input lang="de" class="controls" size="6em" style="width:400" value="Wartezeit pro Zug [ms]:" readonly=true>
@@ -203,18 +203,32 @@
     </div>
 
     <div id="inner">
-      <p lang="en">With this website you can have Sudokus as QR-Codes: First enter the Sudoku, then copy the Sudocu in the URL then creating an QR-Code from this URL with eg qrencode on Ubuntu or Linux that can be installed with "<code>sudo apt-get install qrencode</code>"</p>
-      <p lang="de">Mit dieser Seite können Sudokus auch als QR-Codes verlinkt werden: Zuerst das Sudoku eingeben oder Laden, dann in die URL kopieren und dann von dieser URL einen QR-Code erstellen mit z.B. dem Linux Programm qrencode (das man mit "<code>sudo apt-get install qrencode</code>" installieren kann)</p>
-      <img src="./QRcode.png" width=600/>
-    </div>
-
-    <div id="inner">
+      <h1>SOURCE:</h1>
       <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
     </div>
 
+    <div id="inner">
+      <h1>Sudoku QR-Code</h1>
+      <p lang="en">With this website you can have Sudokus as QR-Codes: First enter the Sudoku, then copy the Sudocu in the URL then creating an QR-Code from this URL with eg qrencode on Ubuntu or Linux that can be installed with "<code>sudo apt-get install qrencode</code>"</p>
+      <p lang="de">Mit dieser Seite können Sudokus auch als QR-Codes verlinkt werden: Zuerst das Sudoku eingeben oder Laden, dann in die URL kopieren und dann von dieser URL einen QR-Code erstellen mit z.B. dem Linux Programm qrencode (das man mit "<code>sudo apt-get install qrencode</code>" installieren kann)</p>
+      <!--<img src="./QRcode.png" width=600/>-->
+
+      <div id="qrcode"></div>
+      <script type="text/javascript" src="jquery.min.js"></script>
+      <script type="text/javascript" src="qrcode.js"></script>
+
+      <script type="text/javascript">
+      
+
+      </script>
+      
+    </div>
+
+
+
     <div>
           <h1>URL</h1>
-    <a href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">http://0x8.ch/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
+    <a id="link" href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">http://0x8.ch/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
 
     </div>
 
