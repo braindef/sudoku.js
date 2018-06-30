@@ -8,6 +8,16 @@ var testBoard0 = [[0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0]];
+                  
+var unsolvable = [[0,4,6,0,0,0,9,0,0],
+                  [0,5,9,0,0,0,7,8,2],
+                  [7,8,3,0,0,0,5,6,2],
+                  [0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0]];
 
 //easy sudoku
 var testBoard1 = [[3,0,0,2,4,0,0,6,0], 
@@ -111,7 +121,6 @@ function drawToConsole() {
     
   }
   console.log("============"+crc+"======"+instance+"==")
-
 }
 
 //checks if the sudoku is solved
@@ -295,11 +304,11 @@ function solve() {
       }
     }
   }
-
 }
 
 function auto() {
   getFromScreen();
+  time = document.getElementById("time").value;
   initCanvas();
   var start = Date.now();
 
@@ -310,7 +319,9 @@ function auto() {
   //update();
   if (isSolved())
     document.getElementById("table").style.backgroundColor="lightgreen";
-  document.getElementById("numSolutions").value=solution+1+"/"+solutions;    
+  document.getElementById("numSolutions").value=solution+1+"/"+solutions;
+  if(finished==false) alert("No Solution");
+  finished=false;
 }
 
 function check() {

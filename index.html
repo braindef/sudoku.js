@@ -30,8 +30,8 @@
     <p lang="en"> test</p>
     <div id="inner">
       <h1>Sudoku Solver<br></h1>
-      <p lang="en">This Sudoku-Solver should solve all valid Sudokus. It uses a recursive backtracking algorithm. You can save the Sudoku to the URL and then copy the URL to send this specific Sudoku to a friend. If you refere with an url with # and then 81 numbers where 0 means empty field you can load a sudoku to the website for example <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">> HERE <</a> You can find the complete Source on <a href="https://github.com/braindef/sudoku.js">GITHUB</a></p>
-      <p lang="de">Dieser Sudoku Solver sollte alle gültigen Sudokus lösen können. Er verwendet einen rekursiven backtracking Algorithmus. Sie können das angezeigte Sudoku in die Adresszeile kopieren mit dem "Sudoku in die URL kopieren". Beispiel <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">> HERE <</a>. Sie finden den kompletten Quellcode auf <a href="https://github.com/braindef/sudoku.js">GITHUB</a></p>
+      <p lang="en">This Sudoku-Solver should solve all valid Sudokus. It uses a recursive backtracking algorithm that not stupidely goes from the first to the last field but selects always the best possible move(s). You can save the Sudoku to the URL and then copy the URL to send this specific Sudoku to a friend. If you refere with an url with # and then 81 numbers where 0 means empty field you can load a sudoku to the website for example <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">> HERE <</a> You can find the complete Source on <a href="https://github.com/braindef/sudoku.js">GITHUB</a></p>
+      <p lang="de">Dieser Sudoku Solver sollte alle gültigen Sudokus lösen können. Er verwendet einen rekursiven backtracking Algorithmus. Der Algrithmus ist so programmiert dass nicht stupide vom ersten zum letzten Feld durchläfut aberimmer die beste Lösung auf dem Sudoku sucht. Sie können das angezeigte Sudoku in die Adresszeile kopieren mit dem "Sudoku in die URL kopieren". Beispiel <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">> HERE <</a>. Sie finden den kompletten Quellcode auf <a href="https://github.com/braindef/sudoku.js">GITHUB</a></p>
       <p lang="fr">Français: Pas encore traduit (you can send a git pull request)</p>
       <p lang="it">Italiano: Non ancora tradotto (you can send a git pull request)</p>
       <p lang="es">Español: Todavía no ha sido traducido (you can send a git pull request)</p>
@@ -64,6 +64,7 @@
       <a href="#" onclick="load(testBoard6)">Example 6</a>
       <a href="#" onclick="load(testBoard7)">Example 7</a>
       <a href="#" onclick="load(testBoard8)">Example 8</a>  
+      <a href="#" onclick="load(unsolvable)">Unsolvable</a>  
     </div>
 
 
@@ -208,6 +209,8 @@
     <div id="inner">
       <a href="https://github.com/braindef/sudoku.js">https://github.com/braindef/sudoku.js</a>
     </div>
+    <h1>URL Variante</h1>
+    <a href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
 
   </div>
 
