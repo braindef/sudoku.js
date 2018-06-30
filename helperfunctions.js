@@ -1,15 +1,20 @@
+//time between animation steps in the second board
+var time;
+
 //if page is finished loading run the initialisations
 document.addEventListener("DOMContentLoaded", function() {
-  load(testBoard7);
+  load(testBoard1);
   //take the board from the URL string if there is any
   fromHash(location.hash);
   //initialize the animation canvas
   initCanvas();
+  time = document.getElementById("time").value;
 });
 
 
 function load(board) {
   document.getElementById("table").style.backgroundColor="transparent";
+  document.getElementById("numSolutions").value = "0/0";
   testBoard=board;
   drawBoard(testBoard);
   init();

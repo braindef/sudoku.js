@@ -1,34 +1,50 @@
 <html>
   <head>
     <title>Sudoku Solver.js</title>
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/multiLang.css">
+    
+    
     <script src="./helperfunctions.js"></script>
     <script src="./algorithm.js"></script>
     <script src="./generator.js"></script>
     <script src="./canvas.js"></script>
 
     <script src="./offCanvasMenu.js"></script>
-    <link rel="stylesheet" href="./offCanvasMenu.css">
+    <link rel="stylesheet" href="./css/offCanvasMenu.css">
     
   </head>
-  <body style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
+  <body class="en" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
   <div>
+     <br>
+    <!--language selection-->
+      <button class="language" onclick="document.body.className='en'"><img height=40 src="./images/EN.png"/></button>
+      <button class="language" onclick="document.body.className='de'"><img height=40 src="./images/DE.png"/></button>
+      <button class="language" onclick="document.body.className='fr'"><img height=40 src="./images/FR.png"/></button>
+      <button class="language" onclick="document.body.className='it'"><img height=40 src="./images/IT.png"/></button>
+      <button class="language" onclick="document.body.className='es'"><img height=40 src="./images/ES.png"/></button>
+      <button class="language" onclick="document.body.className='cc'"><img src="./images/by-nc-sa.png" height=40></a></button>
+      <br>
+    </div>
+    <p lang="en"> test</p>
     <div id="inner">
       <h1>Sudoku Solver<br></h1>
-      <p>you can clear it and enter your own, it should solve all valid Sudokus</p>
+      <p lang="en">you can clear it and enter your own, it should solve all valid Sudokus</p>
       <p>you can save the Sudoku to the URL or if you refere with an url with # and then 81 numbers where 0 means empty field you can load a sudoku to the website for example <a href="./index.html#000000000000000000000000000000000000000000000000010000000000000000000000000000000" target="_blank">> HERE <</a></p>
     </div>
 
     <div id="inner">
-  <!-- THE Off Canvas Menu-->
+    <!-- The selection Buttons above the board-->
 <!--  <div id="main">-->
       <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; load </span>
-      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(0)">&#128193; easy</span> 
-      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(1)">&#128193; medium</span> 
-      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(2)">&#128193; hard</span> 
+      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(0)">&#128193; easy</span>
+      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(1)">&#128193; medium</span>
+      <span id="menubutton" style="font-size:30px;cursor:pointer" onclick="generate(2)">&#128193; hard</span>
+      <br>
     </div>
+    <br>
 
+    <!-- THE Off Canvas Menu-->
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="#" onclick="load(testBoard1)">Example 1</a>
@@ -42,9 +58,8 @@
     </div>
 
 
-
+    <!-- The Sudoku Grid Table with 3x3 cells that contains each 9 input fileds-->
     <div id="inner"> 
-      <!-- The Sudoku Grid Table with 3x3 cells that contains each 9 input fileds-->
       <table id="table" background="sudoku-leer.png">
         <tr>
           <td>
@@ -120,14 +135,18 @@
       </table>
     </div>
 
+    <!-- The Buttons below the Board-->
     <div id="inner">
-      <button onclick="showPreviousSolution()" style="background-color:white; width:240; margin: auto; float:left;">< prev. Solution </button>
+      <button class="controls" onclick="showPreviousSolution()" style="background-color:Lavender; width:240; margin: auto; float:left;">< prev. Solution </button>
       <input id="numSolutions" style="background-color:white; width:100;"/>
-      <button onclick="showNextSolution()" style="background-color:white; width:240; margin: auto; float:right;">next Solution ></button>
-      <button onclick="reset()" style="background-color:lightgray">clear</button>
-      <button onclick="auto(testBoard)" style="background-color:lightgreen; ">SOLVE with backtracking</button>
+      <button class="controls" onclick="showNextSolution()" style="background-color:Lavender; width:240; margin: auto; float:right;">next Solution ></button>
+      <br><br>
+      <button class="controls" onclick="reset()" style="background-color:lightgray">clear</button>
+      <button class="controls" onclick="auto(testBoard)" style="background-color:lightgreen; ">SOLVE with backtracking</button>
       <!--<button onclick="check()" style="background-color:orange">check answers</button>-->
-      <button onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
+      <button class="controls" onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
+      <h1>Slow Motion</h1>
+      <font size="5.5em">Time Between moves in [ms]:</font><input id="time" type="number" min="1" steps="1" value="100" style="width:100; background-color:lightgreen"/>
     </div>
 
 
@@ -137,9 +156,11 @@
       <p>Time: <span id="elapsed">--</span></p>
     </div> -->
 
+    <!-- The slowmotion board-->
     <div id="inner" >
-      <h1>Slow Motion</h1>
+
       <canvas id="mycanvas" width="600" height="600"></canvas>  <br>    <!--<canvas id="mycanvas" width="600" height="100" style="float:left"></canvas>-->
+
       <br>
       <font color="black">&#9679; initial values</font>
       <br>
@@ -147,8 +168,7 @@
 
       <br>
       <font color="green">&#9679; unambigiously solved</font>
-      <br>
-      Time Between moves in milliseconds:<input id="time" type="number" min="1" steps="1" value="100" style="width:100; background-color:lightgreen"/>
+      <br><br>
     </div>
 
     <div id="inner">

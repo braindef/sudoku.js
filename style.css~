@@ -30,7 +30,7 @@ td {
   margin: 40px;
 }
 
-button, input {
+button.controls, input {
   border: 0px solid white;
   text-align: center;
   margin: 2px;
@@ -43,12 +43,18 @@ button {
   width:600px;
 }
 
+button.language {
+  float:right;
+}
+
 input {
   background: transparent;
   font-weight: bold;
 }
 
-
+div.fr {
+  float:right;
+}
 
 canvas {
   border: 1px solid #9C9898;
