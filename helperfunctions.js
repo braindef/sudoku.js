@@ -189,8 +189,15 @@ function toHash() {
 
   document.getElementById("qrcode").innerHTML="";
   
+  var url="";
+  
+  if(window.location.href.indexOf('#') > -1)
+    url=window.location.href;
+  else
+    url=window.location.href+"#"+newHash;
+  
   new QRCode(document.getElementById("qrcode"), {
-	text: window.location.href,
+	text: url,
 	width: 600,
 	height: 600,
 	colorDark : "#000000",

@@ -190,7 +190,7 @@ function toHash() {
   document.getElementById("qrcode").innerHTML="";
   
   new QRCode(document.getElementById("qrcode"), {
-	text: window.location.href+"#"+newHash,
+	text: window.location.href,
 	width: 600,
 	height: 600,
 	colorDark : "#000000",
