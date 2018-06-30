@@ -214,8 +214,8 @@
       <!--<img src="./QRcode.png" width=600/>-->
 
       <div id="qrcode"></div>
-      <script type="text/javascript" src="jquery.min.js"></script>
-      <script type="text/javascript" src="qrcode.js"></script>
+      <script type="text/javascript" src="./qrcodejs/jquery.min.js"></script>
+      <script type="text/javascript" src="./qrcodejs/qrcode.js"></script>
 
       <script type="text/javascript">
       

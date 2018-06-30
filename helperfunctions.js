@@ -176,6 +176,7 @@ function showPreviousSolution() {
       document.getElementById(fields[i][j]).value=solutionsArray[solution][i][j];
 }
 
+var url="";
 
 //to copy board to or from location.hash (that is the part of the URL behind the #-sign...
 function toHash() {
@@ -183,18 +184,16 @@ function toHash() {
   newHash="";
   for(var i=0; i<9; i++)
     for(var j=0; j<9; j++)
-      newHash+=testBoard[i][j];
-  document.getElementById("link").innerHTML=window.location.href+"#"+newHash;
-  document.getElementById("link").href=window.location.href+"#"+newHash;
+      if(document.getElementById(fields[i][j]).value>0)
+        newHash+=document.getElementById(fields[i][j]).value;
+      else newHash+="0";
+      
+  url=window.location.hostname + window.location.pathname + "#" + newHash;
+  
+  document.getElementById("link").innerHTML=url;
+  document.getElementById("link").href=url;
 
   document.getElementById("qrcode").innerHTML="";
-  
-  var url="";
-  
-  if(window.location.href.indexOf('#') > -1)
-    url=window.location.href;
-  else
-    url=window.location.href+"#"+newHash;
   
   new QRCode(document.getElementById("qrcode"), {
 	text: url,
@@ -204,7 +203,8 @@ function toHash() {
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
     });
-  return hash;
+    
+  return newHash;
 }
 
 function fromHash(hash) {
