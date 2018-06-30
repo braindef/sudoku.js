@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function load(board) {
   document.getElementById("table").style.backgroundColor="transparent";
-  document.getElementById("numSolutions").value = "";
+  document.getElementById("numSolutions").value = "0/0";
   testBoard=board;
   drawBoard(testBoard);
   init();

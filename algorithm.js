@@ -1,5 +1,5 @@
 // 0 defines an empty field
-var testBoard0 = [[0,0,0,0,0,0,0,0,0],
+var testBoard = [[0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
@@ -187,6 +187,7 @@ function countCandidates(candidates)
 }
 
 var instance=0;
+var iterations=100;
 var counter=0;
 var finished=false;
 var solutions=-1;
@@ -197,8 +198,12 @@ var solutions=-1;
 function solve() {
   console.log("START solve instance No: "+instance++);
   
-  //just in case there would be a bug, stop after 10000 tries
-  if(instance>10000) return;  //TODO: maybe remove with while true;
+  //just in case there would be a bug, stop after a few 1000 iterations
+  if(instance>iterations)
+  {
+    //alert("Not all possibilities parsed, try a bigger value for iterations, Algorithm stops at "+instance+" iterations");
+    return;
+  }
   //drawToConsole(testBoard);
   var best=[];
   var pos=[];
@@ -237,14 +242,14 @@ function solve() {
     console.log(">>>no next move possible");
     if(isSolved()) 
     {
-      //alert("SOLVED")
+      console.log("RESULT at " + instance + " iterations found");
+      console.log("RESULT: Solutions so far: "+solutions);
       finished=true;
-      console.log("|isSolved()");
       //drawToConsole(testBoard);
       drawBoard(testBoard);
       pushSolution();
       solutions++;
-      console.log("Solutions so far: "+solutions);
+
       return;
     }
     else
@@ -309,6 +314,7 @@ function solve() {
 function auto() {
   getFromScreen();
   time = document.getElementById("time").value;
+  iterations = document.getElementById("iterations").value;
   initCanvas();
   var start = Date.now();
 
@@ -317,10 +323,12 @@ function auto() {
   var end = Date.now();
   elapsed = "0."+(end - start)+" Seconds"; // time in milliseconds
   //update();
-  if (isSolved())
+  if (isSolved()) {
     document.getElementById("table").style.backgroundColor="lightgreen";
+    drawBoard(testBoard);
+  }
   document.getElementById("numSolutions").value=solution+1+"/"+solutions;
-  if(finished==false) alert("No Solution");
+//  if(finished==false) alert("No Solution");
   finished=false;
 }
 

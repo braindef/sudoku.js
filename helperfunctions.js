@@ -62,7 +62,7 @@ function drawBoard(board)
       field = document.getElementById(fields[i][j]);
       if (board[i][j]>0)
       {
-      
+        console.log("debug: "+i+","+j);
         field.value=board[i][j];
         field.readOnly = false;
       }
