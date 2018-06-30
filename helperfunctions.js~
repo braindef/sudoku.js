@@ -19,7 +19,7 @@ function load(board) {
   drawBoard(testBoard);
   init();
   initCanvas();
-  toHash();
+  //toHash();
 }
 
 
@@ -194,8 +194,6 @@ function toHash() {
   document.getElementById("link").href=url;
 
   document.getElementById("qrcode").innerHTML="";
-  
-
   
   new QRCode(document.getElementById("qrcode"), {
 	text: url,

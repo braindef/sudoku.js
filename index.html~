@@ -15,7 +15,7 @@
     
   </head>
   <body class="en" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
-  <div>
+  <div id="inner">
      <br>
     <!--language selection-->
       <button class="language" onclick="document.body.className='en'"><img height=40 src="./images/EN.png"/></button>
@@ -25,7 +25,8 @@
       <button class="language" onclick="document.body.className='es'"><img height=40 src="./images/ES.png"/></button>
       <button class="language" onclick="window.location.href='https://creativecommons.org/licenses/by-nc-sa/3.0/ch/'"><img src="./images/by-nc-sa.png" height=40></a></button>
       <button class="language" onclick="window.location.href='https://github.com/braindef/sudoku.js'"><img height=40 src="./images/github.png"/></button>
-      <br>  
+      <br>
+      <br>
     </div>
     <p lang="en"> test</p>
     <div id="inner">
@@ -165,8 +166,8 @@
       <!--<button onclick="check()" style="background-color:orange">check answers</button>-->
       <button lang="de" class="controls" onclick="auto(testBoard)" style="background-color:lightgreen; ">Automatisch LÖSEN</button>
       
-      <button lang="en" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
-      <button lang="de" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">Sudoku in die URL kopieren</button>
+      <button lang="en" class="controls" onclick="toHash()" style="background-color:yellow">generate URL and QRCode (BOTTOM)</button>
+      <button lang="de" class="controls" onclick="toHash()" style="background-color:yellow">URL und QRCode generieren (UNTEN)</button>
 
       <input lang="en" class="controls" size="6em" style="width:400;" value="Iterations to try:" readonly=true>
       <input lang="de" class="controls" size="6em" style="width:400;" value="Max. Iterationen" readonly=true>
@@ -221,19 +222,13 @@
       
 
       </script>
-      
+      <br>
+      <br>
+    <a id="link" href="http://0x8.ch/sudoku.js/code/sudoku.js/index.html">http://0x8.ch/sudoku.js/code/sudoku.js/index.html</a>
+      <br>
+      <br>
     </div>
-
-
-
-    <div>
-          <h1>URL</h1>
-    <a id="link" href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">http://0x8.ch/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
-
-    </div>
-
   </div>
-
 </html>
 
 

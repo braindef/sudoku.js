@@ -19,7 +19,7 @@ function load(board) {
   drawBoard(testBoard);
   init();
   initCanvas();
-  toHash();
+  //toHash();
 }
 
 
@@ -203,7 +203,9 @@ function toHash() {
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
     });
-    
+
+  window.scrollTo(0,document.body.scrollHeight);
+
   return newHash;
 }
 
