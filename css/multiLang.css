@@ -1,32 +1,32 @@
 
 
-p
+p, span, .controls
 {
   display: none;
-  padding: 10px 80px 20px 80px;	
+  text-align: justify;
 }
 
-body.en > *> p[lang=en] 
+body.en > *> *[lang=en] 
 {
   display: inline-block;
 }
 
-body.de > *> p[lang=de] 
+body.de > *> *[lang=de] 
 {
   display: inline-block;
 }
  
-body.fr > *> p[lang=fr] 
+body.fr > *> *[lang=fr] 
 {
   display: inline-block;
 }
 
-body.it > *> p[lang=it] 
+body.it > *> *[lang=it] 
 {
   display: inline-block;
 }
 
-body.es > *> p[lang=es] 
+body.es > *> *[lang=es] 
 {
   display: inline-block;
 }

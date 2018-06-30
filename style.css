@@ -56,3 +56,7 @@ div.fr {
 canvas {
   border: 1px solid #9C9898;
 }
+
+span {
+  font-size: 3em;
+}
