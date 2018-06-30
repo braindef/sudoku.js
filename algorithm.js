@@ -106,22 +106,16 @@ var testBoard8 = [[3,0,0,2,4,0,0,6,0],
                   [0,0,0,3,0,0,7,4,0],
                   [0,0,0,0,0,0,0,0,0]];
 
+var testBoard9 = [[0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,3,0,8,5],
+                  [0,0,1,0,2,0,0,0,0],
+                  [0,0,0,5,0,7,0,0,0],
+                  [0,0,4,0,0,0,1,0,0],
+                  [0,9,0,0,0,0,0,0,0],
+                  [5,0,0,0,0,0,0,7,3],
+                  [0,0,2,0,1,0,0,0,0],
+                  [0,0,0,0,4,0,0,0,9]];
 
-//draw board to debug console (Helper Function)
-function drawToConsole() {
-  var crc=0;
-  for (var i=0; i<9; i++)
-  {
-       console.log(testBoard[i][0] + "  " + testBoard[i][1] + "  " + testBoard[i][2] + " | " + testBoard[i][3] + "  " + testBoard[i][4] + 
-           "  " + testBoard[i][5] + " | " + testBoard[i][6] + "  " + testBoard[i][7] + "  " + testBoard[i][8]);
-    if(i%3==2 && i != 8) console.log("----------------------------");
-    crc += ( testBoard[i][0] + testBoard[i][1] + testBoard[i][2] + testBoard[i][3] + testBoard[i][4] + 
-          + testBoard[i][5] + testBoard[i][6] + testBoard[i][7] + testBoard[i][8]);
-
-    
-  }
-  console.log("============"+crc+"======"+instance+"==")
-}
 
 //checks if the sudoku is solved
 function isSolved() {
@@ -199,9 +193,9 @@ function solve() {
   console.log("START solve instance No: "+instance++);
   
   //just in case there would be a bug, stop after a few 1000 iterations
-  if(instance>iterations)
+  if(instance>iterations) //TODO:instance could also be named iteration
   {
-    //alert("Not all possibilities parsed, try a bigger value for iterations, Algorithm stops at "+instance+" iterations");
+    alert("Not all possibilities parsed, try a bigger value for iterations, Algorithm stops at "+instance+" iterations");
     return;
   }
   //drawToConsole(testBoard);
@@ -222,8 +216,12 @@ function solve() {
 
 		console.log("pos, candidates: "+pos +", " + candidates+");");
 		count = countCandidates(candidates);
-		console.log(count);
-  } catch(err) { count=0; }
+  } catch(err)
+    {
+      //if there is no result from getBestCandidates we set the count of the candidates to 0;
+      //TODO: maybe not as try catch statement
+      count=0;
+    }
 
   //-------------------------------------------------------------------------
   //this lines have nothing to do with algoritm it's for the slow motion only

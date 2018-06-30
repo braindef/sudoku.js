@@ -51,18 +51,34 @@ function getFromScreen() {
     }
 }
 
+//draw board to debug console (Helper Function)
+function drawToConsole() {
+  var crc=0;
+  for (var i=0; i<9; i++)
+  {
+       console.log(testBoard[i][0] + "  " + testBoard[i][1] + "  " + testBoard[i][2] + " | " + testBoard[i][3] + "  " + testBoard[i][4] + 
+           "  " + testBoard[i][5] + " | " + testBoard[i][6] + "  " + testBoard[i][7] + "  " + testBoard[i][8]);
+    if(i%3==2 && i != 8) console.log("----------------------------");
+    crc += ( testBoard[i][0] + testBoard[i][1] + testBoard[i][2] + testBoard[i][3] + testBoard[i][4] + 
+          + testBoard[i][5] + testBoard[i][6] + testBoard[i][7] + testBoard[i][8]);
+
+    
+  }
+  console.log("============"+crc+"======"+instance+"==")
+}
+
 
 //draw board on to the html grid in the screen (the table of input boxes)
 function drawBoard(board)
 {
   console.log("drawBoard(board)");
+  drawToConsole();
   for (i=0; i<9; i++)
     for (j=0; j<9; j++)
     {  
       field = document.getElementById(fields[i][j]);
       if (board[i][j]>0)
       {
-        console.log("debug: "+i+","+j);
         field.value=board[i][j];
         field.readOnly = false;
       }
@@ -140,46 +156,14 @@ function pushSolution()
 
   console.log("|solutionIndex: "+solutionIndex);
 
+  //copy the board so that's a copy and not a reference that would be modified then later and should not be modified
   var newArray = testBoard.map(function(arr) {
-    return arr.slice();
-});
+                                               return arr.slice();
+                                             });
   solutionsArray.push(newArray);
-
-/*
-  solutionsArray.push([[0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0],
-                       [0,0,0,0,0,0,0,0,0]]);
-
-  for (var m=0; m<9; m++)
-    for (var n=0; n<9; n++)
-      solutionsArray[solutionIndex++][m][n]=testBoard[m][n]; */
 }
 
 var index=0;
-//Board history handling
-function pushCheckpoint(candidates)
-{
-  index++;
-  console.log("pushCheckpoint("+index+"); selection="+candidates);
-  if(index>81||index<0)
-  {
-    //alert("Error");
-    return;
-  }
-
-  for (var m=0; m<9; m++)
-    for (var n=0; n<9; n++)
-    try {
-      checkpointArray[index][m][n]=testBoard[m][n];
-    } catch(err) { alert("m: "+m+" n: "+n+" index: "+index);}
-  selectionArray[index]=candidates;
-}
 
 
 //store a board at the index

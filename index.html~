@@ -56,7 +56,7 @@
     <!-- THE Off Canvas Menu-->
     <div id="mySidenav" class="sidenav">
       <a lang="en" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="#" onclick="load(testBoard1)">Example 1</a>
+      <a href="#" onclick="load(testBoard1)">Example 1 (EASY)</a>
       <a href="#" onclick="load(testBoard2)">Example 2</a>
       <a href="#" onclick="load(testBoard3)">Example 3</a>
       <a href="#" onclick="load(testBoard4)">Example 4</a>
@@ -64,6 +64,7 @@
       <a href="#" onclick="load(testBoard6)">Example 6</a>
       <a href="#" onclick="load(testBoard7)">Example 7</a>
       <a href="#" onclick="load(testBoard8)">Example 8</a>  
+      <a href="#" onclick="load(testBoard9)">Example 9 (BIG)</a>  
       <a href="#" onclick="load(unsolvable)">Unsolvable</a>  
     </div>
 
@@ -167,19 +168,15 @@
       <button lang="en" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">copy board to URL</button>
       <button lang="de" class="controls" onclick="location.hash=toHash()" style="background-color:yellow">Sudoku in die URL kopieren</button>
 
-      <br>
-      <br>
-
-      <font lang="en" class="controls" size="5.5em">Iterations:</font>
-      <font lang="de" class="controls" size="5.5em">Iterationen:</font>
+      <input lang="en" class="controls" size="6em" style="width:400;background-color: #E5E4E2;" value="Iterations to try:" readonly=true>
+      <input lang="de" class="controls" size="6em" style="width:400;background-color: #E5E4E2;" value="Max. Iterationen" readonly=true>
       
-      <input id="iterations" type="number" min="1" steps="1" value="10000" style="width:100; background-color:lightgreen"/>
+      <input id="iterations" type="number" min="1" steps="1" value="10000" style="width:180; background-color:#E5E4E2; float:right"/>
 
-      <font lang="en" class="controls" size="5.5em">Time Between moves in [ms]:</font>
-      <font lang="de" class="controls" size="5.5em">Wartezeit pro Zug [ms]:</font>
+      <input lang="en" class="controls" size="6em" style="width:400" value="Animationdelay [ms]:" readonly=true>
+      <input lang="de" class="controls" size="6em" style="width:400" value="Wartezeit pro Zug [ms]:" readonly=true>
 
-      <input id="time" type="number" min="1" steps="1" value="100" style="width:100; background-color:lightgreen"/>
-
+      <input id="time" type="number" min="1" steps="1" value="100" style="width:180; background-color: #E5E4E2; float:right;"/>
 
       <br>
     </div>
@@ -217,7 +214,7 @@
 
     <div>
           <h1>URL</h1>
-    <a href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
+    <a href="file:///home/marc/disk/home/marc/Daten.2017/code/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009">http://0x8.ch/sudoku.js/index.html#700010050050003000008000200004500030100070006030002800040000300000900070600005009</a>
 
     </div>
 
