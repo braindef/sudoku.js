@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
   <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Sudoku Solver.js</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/multiLang.css">
@@ -215,6 +217,7 @@
       <!--<img src="./QRcode.png" width=600/>-->
 
       <div id="qrcode"></div>
+      <!-- USING JQUERY ONLY FOR qrcode.js-->
       <script type="text/javascript" src="./qrcodejs/jquery.min.js"></script>
       <script type="text/javascript" src="./qrcodejs/qrcode.js"></script>
 
