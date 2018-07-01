@@ -13,5 +13,7 @@ if you find bugs or have a better idea please don't hesist to make a pull reques
 
 https://0x8.ch/sudoku.js/
 
-![https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png](https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png)    ![https://github.com/braindef/sudoku.js/raw/master/sudoku.gif](https://github.com/braindef/sudoku.js/raw/master/sudoku.gif)
+![https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png](https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png)   
+
+![https://github.com/braindef/sudoku.js/raw/master/sudoku.gif](https://github.com/braindef/sudoku.js/raw/master/sudoku.gif) ![https://github.com/braindef/sudoku.js/raw/master/qrcode.gif](https://github.com/braindef/sudoku.js/raw/master/qrcode.gif)
 
