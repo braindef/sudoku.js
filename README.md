@@ -15,5 +15,5 @@ https://0x8.ch/sudoku.js/
 
 ![https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png](https://raw.githubusercontent.com/braindef/sudoku.js/master/screenshot.png)   
 
-![https://github.com/braindef/sudoku.js/raw/master/sudoku.gif](https://github.com/braindef/sudoku.js/raw/master/sudoku.gif) ![https://github.com/braindef/sudoku.js/raw/master/qrcode.gif](https://github.com/braindef/sudoku.js/raw/master/qrcode.gif)
+![https://github.com/braindef/sudoku.js/raw/master/sudoku.gif](https://github.com/braindef/sudoku.js/raw/master/sudoku.gif) ![https://github.com/braindef/sudoku.js/raw/master/qrcode.png](https://github.com/braindef/sudoku.js/raw/master/qrcode.png)
 
