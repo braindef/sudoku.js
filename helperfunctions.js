@@ -188,7 +188,7 @@ function toHash() {
         newHash+=document.getElementById(fields[i][j]).value;
       else newHash+="0";
       
-  url=window.location.hostname + window.location.pathname + "#" + newHash;
+  url="http://"+window.location.hostname + window.location.pathname + "#" + newHash;
   
   document.getElementById("link").innerHTML=url;
   document.getElementById("link").href=url;

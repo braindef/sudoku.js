@@ -188,7 +188,7 @@ function toHash() {
         newHash+=document.getElementById(fields[i][j]).value;
       else newHash+="0";
       
-  url=window.location.hostname + window.location.pathname + "#" + newHash;
+  url="http"+window.location.hostname + window.location.pathname + "#" + newHash;
   
   document.getElementById("link").innerHTML=url;
   document.getElementById("link").href=url;
@@ -203,7 +203,9 @@ function toHash() {
 	colorLight : "#ffffff",
 	correctLevel : QRCode.CorrectLevel.H
     });
-    
+
+  window.scrollTo(0,document.body.scrollHeight);
+
   return newHash;
 }
 
