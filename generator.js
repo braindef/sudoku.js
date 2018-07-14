@@ -10,6 +10,14 @@ function generate(level) {
   drawBoard(testBoard);
 }
 
+function randomize()
+{
+  getFromScreen();
+  shuffle();
+  init();
+  drawBoard(testBoard);
+}
+
 
 function shuffle() {
   for(var i=0; i<30; i++)
